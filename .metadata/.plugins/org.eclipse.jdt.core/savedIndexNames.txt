@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\lucas\OneDrive\Documents\Programacion\Curso.OOP.Mati\ProyectBattleTanks\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+4254080466.index
+2660946107.index

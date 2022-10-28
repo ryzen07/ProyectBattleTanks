@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author lucas
- *
- */
-module BattleTanksProject {
-}
