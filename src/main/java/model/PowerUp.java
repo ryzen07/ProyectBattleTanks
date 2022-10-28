@@ -1,4 +1,5 @@
-package myClass;
+package model;
+
 
 public class PowerUp {
 

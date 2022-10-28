@@ -1,4 +1,6 @@
-package myClass;
+
+
+package model;
 
 public class Map {
 
