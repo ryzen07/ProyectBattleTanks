@@ -13,7 +13,7 @@ public class Board {
 
 	public void add(Entity entity) {
 		for (int i = entity.center.getX(); i < entity.center.getX() + entity.majorradius; i++) {
-			for (int j = entity.center.getY(); j > entity.minorradius; j++) l{
+			for (int j = entity.center.getY(); j > entity.minorradius; j++) {
 				matrix[i][j].add(entity);
 			}
 		}
