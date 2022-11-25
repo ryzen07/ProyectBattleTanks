@@ -10,18 +10,8 @@ public abstract class Entity {
 		this.width = width;
 	}
 
-	public Entity(int height, int width) {
-		this.height = height;
-		this.width = width;
-	}
-
-	// entity
-	// entity.center.getX()-entity.height/2
-
 	@Override
 	public String toString() {
-		// System.out.println("#");
 		return "#";
 	}
-
 }

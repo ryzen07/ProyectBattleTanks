@@ -1,9 +1,9 @@
 package model;
 
-public class Tank extends Entity implements Movable {
+public class Tank extends Entity {
 
 	private static final int HEIGHT = 2;
-	private static final int WIDTH = 3;
+	private static final int WIDTH = 2;
 	// private final boolean allied;
 	// private final int life;
 
@@ -29,16 +29,6 @@ public class Tank extends Entity implements Movable {
 
 	public Bullet shoot() {
 		return new Bullet();
-	}
-
-	@Override
-	public void move(Direction direction) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void collision() {
-		// TODO Auto-generated method stub
 	}
 
 	public Position getCenter() {

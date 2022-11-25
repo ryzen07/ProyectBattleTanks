@@ -10,6 +10,12 @@ public class BoardTest {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, 2, 3);
 		board.add(tank);
-		assertTrue(board.get(0, 0).contains(tank));
+		assertTrue(board.get(2, 3).contains(tank));
+		assertTrue(board.get(2, 1).contains(tank));
+		assertTrue(board.get(2, 3).contains(tank));
+		assertTrue(board.get(2, 1).contains(tank));
+		assertTrue(board.get(2, 3).contains(tank));
+		assertTrue(board.get(2, 1).contains(tank));
+
 	}
 }
