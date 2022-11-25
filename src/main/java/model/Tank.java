@@ -1,9 +1,9 @@
 package model;
 
-public class Tank extends Entity {
+public class Tank extends Movable {
 
-	private static final int HEIGHT = 2;
-	private static final int WIDTH = 2;
+	private static final int MAJORRADIUS = 2;
+	private static final int MINORRADIUS = 1;
 	// private final boolean allied;
 	// private final int life;
 
@@ -16,11 +16,7 @@ public class Tank extends Entity {
 	 */
 
 	public Tank(Direction direction, int x, int y) {
-		super(new Position(x, y), HEIGHT, WIDTH);
-	}
-
-	public Tank(int x, int y) {
-		super(new Position(x, y), HEIGHT, WIDTH);
+		super(new Position(x, y), MAJORRADIUS, MINORRADIUS, direction);
 	}
 
 	/*

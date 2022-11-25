@@ -12,8 +12,8 @@ public class Board {
 	}
 
 	public void add(Entity entity) {
-		for (int i = entity.center.getX() - entity.height / 2; i < entity.center.getX() + entity.height / 2; i++) {
-			for (int j = entity.center.getY(); j - 1 < entity.width; j++) {
+		for (int i = entity.center.getX(); i < entity.center.getX() + entity.majorradius; i++) {
+			for (int j = entity.center.getY(); j > entity.minorradius; j++) l{
 				matrix[i][j].add(entity);
 			}
 		}

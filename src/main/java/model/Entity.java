@@ -2,12 +2,12 @@ package model;
 
 public abstract class Entity {
 	protected Position center;
-	protected int height, width;
+	protected int majorradius, minorradius;
 
 	public Entity(Position center, int height, int width) {
 		this.center = center;
-		this.height = height;
-		this.width = width;
+		this.majorradius = majorradius;
+		this.minorradius = minorradius;
 	}
 
 	@Override

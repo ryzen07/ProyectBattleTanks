@@ -5,9 +5,12 @@ public class Movable extends Entity {
 
 	public Movable(Position center, int height, int width, Direction direction) {
 		super(center, height, width);
-		// TODO Auto-generated constructor stub
+		this.direction = direction;
 	}
 
-	public void collision() {
+	protected void move(Direction direction) {
+	}
+
+	protected void collision() {
 	}
 }
