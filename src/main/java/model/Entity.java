@@ -4,34 +4,34 @@ public abstract class Entity {
 	protected Position center;
 	private final int majorRadius, minorRadius;
 
-	public Entity(Position center, int majorradius, int minorradius) {
+	public Entity(Position center, int majorRadius, int minorRadius) {
 		this.center = center;
-		majorRadius = majorradius;
-		minorRadius = minorradius;
+		this.majorRadius = majorRadius;
+		this.minorRadius = minorRadius;
 	}
 
-	protected int getMajorRadius() {
+	protected int getXRadius() {
 		return majorRadius;
 	}
 
-	protected int getMinorRadius() {
+	protected int getYRadius() {
 		return minorRadius;
 	}
 
 	public int getMinorX() {
-		return center.getX() - getMajorRadius();
+		return center.getX() - getXRadius();
 	}
 
 	public int getMayorX() {
-		return center.getX() + getMajorRadius();
+		return center.getX() + getXRadius();
 	}
 
 	public int getMinorY() {
-		return center.getY() - getMinorRadius();
+		return center.getY() - getYRadius();
 	}
 
 	public int getMayorY() {
-		return center.getY() + getMinorRadius();
+		return center.getY() + getYRadius();
 	}
 
 	@Override

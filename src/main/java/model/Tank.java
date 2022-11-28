@@ -4,6 +4,7 @@ public class Tank extends Movable {
 
 	public static final int MAJOR_RADIUS = 2;
 	public static final int MINOR_RADIUS = 1;
+
 	// private final boolean allied;
 	// private final int life;
 
@@ -24,7 +25,7 @@ public class Tank extends Movable {
 	 */
 
 	public Bullet shoot() {
-		return new Bullet(2, 3, Direction.UP);
+		return new Bullet(new Position(2, 3), Direction.UP);
 	}
 
 	public Position getCenter() {

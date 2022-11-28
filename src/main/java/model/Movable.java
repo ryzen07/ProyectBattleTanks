@@ -15,18 +15,18 @@ public class Movable extends Entity {
 	}
 
 	@Override
-	protected int getMajorRadius() {
+	protected int getXRadius() {
 		if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
-			return super.getMinorRadius();
+			return super.getYRadius();
 		}
-		return super.getMajorRadius();
+		return super.getXRadius();
 	}
 
 	@Override
-	protected int getMinorRadius() {
+	protected int getYRadius() {
 		if (direction.equals(Direction.UP) || direction.equals(Direction.DOWN)) {
-			return super.getMinorRadius();
+			return super.getYRadius();
 		}
-		return super.getMajorRadius();
+		return super.getXRadius();
 	}
 }

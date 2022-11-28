@@ -4,8 +4,8 @@ public class Bullet extends Movable {
 
 	public static final int RADIUS = 0;
 
-	public Bullet(int x, int y, Direction direction) {
-		super(new Position(x, y), RADIUS, RADIUS, direction);
+	public Bullet(Position position, Direction direction) {
+		super(position, RADIUS, RADIUS, direction);
 	}
 
 	@Override
