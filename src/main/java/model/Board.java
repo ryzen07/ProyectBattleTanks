@@ -1,19 +1,22 @@
 package model;
 
 public class Board {
-	Square matrix[][] = new Square[6][6];
+	Square matrix[][] = new Square[10][10];
 
 	public Board() {
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 6; j++) {
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
 				matrix[i][j] = new Square();
 			}
 		}
 	}
 
-	public void add(Entity entity) {
-		for (int i = entity.center.getX(); i < entity.center.getX() + entity.majorradius; i++) {
-			for (int j = entity.center.getY(); j > entity.minorradius; j++) {
+	public void add(Entity entity) throws EntityOutOfRange {
+		if (entity.getMinorX() < 0 || entity.getMinorY() < 0 || entity.getMayorX() > 10 || entity.getMayorX() > 10) {
+			throw new EntityOutOfRange();
+		}
+		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
+			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
 				matrix[i][j].add(entity);
 			}
 		}

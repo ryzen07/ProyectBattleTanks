@@ -13,4 +13,20 @@ public class Movable extends Entity {
 
 	protected void collision() {
 	}
+
+	@Override
+	protected int getMajorRadius() {
+		if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
+			return super.getMinorRadius();
+		}
+		return super.getMajorRadius();
+	}
+
+	@Override
+	protected int getMinorRadius() {
+		if (direction.equals(Direction.UP) || direction.equals(Direction.DOWN)) {
+			return super.getMinorRadius();
+		}
+		return super.getMajorRadius();
+	}
 }

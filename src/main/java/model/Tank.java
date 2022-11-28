@@ -2,8 +2,8 @@ package model;
 
 public class Tank extends Movable {
 
-	private static final int MAJORRADIUS = 2;
-	private static final int MINORRADIUS = 1;
+	public static final int MAJOR_RADIUS = 2;
+	public static final int MINOR_RADIUS = 1;
 	// private final boolean allied;
 	// private final int life;
 
@@ -16,7 +16,7 @@ public class Tank extends Movable {
 	 */
 
 	public Tank(Direction direction, int x, int y) {
-		super(new Position(x, y), MAJORRADIUS, MINORRADIUS, direction);
+		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, direction);
 	}
 
 	/*
@@ -24,7 +24,7 @@ public class Tank extends Movable {
 	 */
 
 	public Bullet shoot() {
-		return new Bullet();
+		return new Bullet(2, 3, Direction.UP);
 	}
 
 	public Position getCenter() {
@@ -39,5 +39,4 @@ public class Tank extends Movable {
 	public String toString() {
 		return "x";
 	}
-
 }
