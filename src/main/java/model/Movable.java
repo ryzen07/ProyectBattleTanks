@@ -1,10 +1,10 @@
 package model;
 
 public class Movable extends Entity {
-	Direction direction;
+	private final Direction direction;
 
-	public Movable(Position center, int height, int width, Direction direction) {
-		super(center, height, width);
+	public Movable(Position center, int majorRadius, int minorRadius, Direction direction) {
+		super(center, majorRadius, minorRadius);
 		this.direction = direction;
 	}
 

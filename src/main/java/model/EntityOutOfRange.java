@@ -1,5 +1,6 @@
 package model;
 
-public class EntityOutOfRange extends Exception {
+@SuppressWarnings("serial")
+public class EntityOutOfRange extends RuntimeException {
 
 }

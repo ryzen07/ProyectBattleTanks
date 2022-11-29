@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class BoardTest {
 	@Test
-	public void addedTankDirectionUp() throws EntityOutOfRange {
+	public void addedTankDirectionUp() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, 2, 2);
 		board.add(tank);
@@ -15,7 +15,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void addedTankDirectionDown() throws EntityOutOfRange {
+	public void addedTankDirectionDown() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.DOWN, 2, 2);
 		board.add(tank);
@@ -23,7 +23,7 @@ public class BoardTest {
 	}
 
 	@Test
-	public void addedTankDirectionRight() throws EntityOutOfRange {
+	public void addedTankDirectionRight() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.RIGHT, 2, 2);
 		board.add(tank);
@@ -31,21 +31,22 @@ public class BoardTest {
 	}
 
 	@Test
-	public void addedTankDirectionLeft() throws EntityOutOfRange {
+	public void addedTankDirectionLeft() {
 		Board board = new Board();
-		Tank tank = new Tank(Direction.LEFT, 2, 2);
+		Tank tank = new Tank(Direction.LEFT, 3, 2);
 		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
 	@Test(expected = EntityOutOfRange.class)
-	public void whenTankIsAddedOutOfRangeThenThrowException() throws EntityOutOfRange {
+	public void whenTankIsAddedOutOfRangeThenThrowException() {
 		Board board = new Board();
-		Tank tank = new Tank(Direction.UP, 8, 8);
+		Tank tank = new Tank(Direction.UP, Board.SQUARE_WIDTH - Tank.MAJOR_RADIUS,
+				Board.SQUARE_HEIGHT - Tank.MINOR_RADIUS);
 		board.add(tank);
 	}
 
-	public void checkTankPosition(Tank tank, Board board) throws EntityOutOfRange {
+	public void checkTankPosition(Tank tank, Board board) {
 		board.add(tank);
 		int count = 0;
 		for (int i = tank.center.getX() - tank.getXRadius(); i <= tank.center.getX() + tank.getXRadius(); i++) {
