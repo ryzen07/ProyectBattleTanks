@@ -13,11 +13,15 @@ public class Board {
 		}
 	}
 
-	public void add(Entity entity) throws EntityOutOfRange {
-		if (entity.getMinorX() < 0 || entity.getMinorY() < 0 || entity.getMayorX() > SQUARE_HEIGHT
-				|| entity.getMayorX() > SQUARE_HEIGHT) {
+	public void checkInBoardBounds(Entity entity) throws EntityOutOfRange {
+		if (entity.getMinorY() < 0 || entity.getMinorX() < 0 || entity.getMayorY() > SQUARE_HEIGHT
+				|| entity.getMayorX() > SQUARE_WIDTH) {
 			throw new EntityOutOfRange();
 		}
+	}
+
+	public void add(Entity entity) throws EntityOutOfRange {
+		checkInBoardBounds(entity);
 		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
 			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
 				matrix[i][j].add(entity);
