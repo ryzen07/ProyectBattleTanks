@@ -5,9 +5,10 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 public class TankTest {
+
 	@Test
-	public void whenTankShootThenABulletIsCreated(){
-		Tank tanks = new Tank(true, 4);
+	public void whenTankShootThenABulletIsCreated() {
+		Tank tanks = new Tank(Direction.DOWN, 4, 3);
 		Bullet bullet = tanks.shoot();
 		assertNotNull(bullet);
 	}
