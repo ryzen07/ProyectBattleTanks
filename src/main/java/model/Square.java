@@ -10,6 +10,10 @@ public class Square {
 		objects.add(object);
 	}
 
+	public void remove(Entity object) {
+		objects.remove(object);
+	}
+
 	public boolean contains(Entity entity) {
 		return objects.contains(entity);
 	}

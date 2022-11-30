@@ -29,6 +29,23 @@ public class Board {
 		}
 	}
 
+	public void remove(Entity entity) {
+		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
+			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
+				matrix[i][j].remove(entity);
+			}
+		}
+	}
+
+	public void move(Entity entity) {
+		checkInBoardBounds(entity);
+		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
+			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
+				matrix[i + 1][j - 1].add(entity);
+			}
+		}
+	}
+
 	public Square get(int x, int y) {
 		return matrix[x][y];
 	}

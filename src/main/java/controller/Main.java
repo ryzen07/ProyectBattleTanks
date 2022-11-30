@@ -9,10 +9,12 @@ import model.Tank;
 public class Main {
 	public static void main(String[] args) {
 		Board mapatest = new Board();
-		Tank tanke = new Tank(Direction.LEFT, 10, 10);
+		Tank tanke = new Tank(Direction.UP, 5, 5);
 		Bullet bullet = new Bullet(new Position(2, 3), Direction.LEFT);
+		// mapatest.add(bullet);
 		mapatest.add(tanke);
-		mapatest.add(bullet);
+		mapatest.remove(tanke);
+		mapatest.move(tanke);
 		System.out.println(mapatest);
 	}
 }
