@@ -37,13 +37,11 @@ public class Board {
 		}
 	}
 
-	public void move(Entity entity) {
+	public void move(Movable entity) throws InterruptedException {
 		checkInBoardBounds(entity);
-		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
-			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
-				matrix[i + 1][j - 1].add(entity);
-			}
-		}
+		// ControllerOfEntityMovable controller = new
+		// ControllerOfEntityMovable(entity.center);
+		entity.move(matrix, entity, Direction.RIGHT);
 	}
 
 	public Square get(int x, int y) {
