@@ -35,6 +35,6 @@ public class Controller {
 	}
 
 	public void addEntities() {
-		map.addEntity(tank);
+		map.add(tank);
 	}
 }

@@ -1,16 +1,13 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 
 public class Board {
 	public static final int SQUARE_HEIGHT = 10;
 	public static final int SQUARE_WIDTH = 10;
-	List<Integer> miLista = new ArrayList<>();
 	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
-	Collection<Entity> entityList = new HashSet<>();
+	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
 		for (int i = 0; i < SQUARE_HEIGHT; i++) {
@@ -70,11 +67,11 @@ public class Board {
 	public void update() {
 		removeAll();
 		moveAll();
-		appendAll();
+		addAll();
 	}
 
-	public void addEntity(Entity entity) {
-		entityList.add(entity);
+	public void add(Entity entity) {
+		entities.add(entity);
 		appendEntity(entity);
 	}
 
@@ -83,8 +80,8 @@ public class Board {
 		// puedan mover) que se muevan.
 	}
 
-	private void appendAll() {
-		for (Entity entity : entityList) {
+	private void addAll() {
+		for (Entity entity : entities) {
 			appendEntity(entity);
 		}
 		// uso un foreach recorro toda la lista de entidades que deberia tener creada en

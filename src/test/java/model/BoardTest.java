@@ -10,7 +10,7 @@ public class BoardTest {
 	public void addedTankDirectionUp() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, 2, 2);
-		board.addEntity(tank);
+		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
@@ -18,7 +18,7 @@ public class BoardTest {
 	public void addedTankDirectionDown() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.DOWN, 2, 2);
-		board.addEntity(tank);
+		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
@@ -26,7 +26,7 @@ public class BoardTest {
 	public void addedTankDirectionRight() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.RIGHT, 2, 2);
-		board.addEntity(tank);
+		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
@@ -34,7 +34,7 @@ public class BoardTest {
 	public void addedTankDirectionLeft() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.LEFT, 2, 2);
-		board.addEntity(tank);
+		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
@@ -43,11 +43,11 @@ public class BoardTest {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, Board.SQUARE_WIDTH - Tank.MAJOR_RADIUS,
 				Board.SQUARE_HEIGHT - Tank.MINOR_RADIUS);
-		board.addEntity(tank);
+		board.add(tank);
 	}
 
 	public void checkTankPosition(Tank tank, Board board) {
-		board.addEntity(tank);
+		board.add(tank);
 		int count = 0;
 		for (int i = tank.center.getX() - tank.getXRadius(); i <= tank.center.getX() + tank.getXRadius(); i++) {
 			for (int j = tank.center.getY() - tank.getYRadius(); j <= tank.center.getY() + tank.getYRadius(); j++) {
