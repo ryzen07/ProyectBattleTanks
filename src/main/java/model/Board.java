@@ -1,11 +1,14 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 public class Board {
 	public static final int SQUARE_HEIGHT = 10;
 	public static final int SQUARE_WIDTH = 10;
+	List<Integer> miLista = new ArrayList<>();
 	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
 	Collection<Entity> entityList = new HashSet<>();
 
@@ -72,6 +75,7 @@ public class Board {
 
 	public void addEntity(Entity entity) {
 		entityList.add(entity);
+		appendEntity(entity);
 	}
 
 	private void moveAll() {
@@ -80,6 +84,9 @@ public class Board {
 	}
 
 	private void appendAll() {
+		for (Entity entity : entityList) {
+			appendEntity(entity);
+		}
 		// uso un foreach recorro toda la lista de entidades que deberia tener creada en
 		// mi board,
 		// en vez de pasarle una sola entidad (como tanque) le paso la lista.

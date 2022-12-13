@@ -21,6 +21,7 @@ public class Controller {
 		System.out.println(map);
 		while (true) {
 			update();
+			Thread.sleep(1000);
 		}
 	}
 
