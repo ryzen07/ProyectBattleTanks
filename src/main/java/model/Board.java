@@ -10,7 +10,7 @@ public class Board {
 	public static final int SQUARE_WIDTH = 10;
 	List<Integer> miLista = new ArrayList<>();
 	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
-	Collection<Entity> entityList = new HashSet<>();
+	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
 		for (int i = 0; i < SQUARE_HEIGHT; i++) {
