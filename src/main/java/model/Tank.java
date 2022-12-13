@@ -26,6 +26,7 @@ public class Tank extends Movable {
 
 	public Bullet shoot() {
 		return new Bullet(new Position(2, 3), Direction.UP);
+
 	}
 
 	public Position getCenter() {

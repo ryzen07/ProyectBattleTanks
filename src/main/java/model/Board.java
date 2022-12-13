@@ -1,9 +1,13 @@
 package model;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 public class Board {
 	public static final int SQUARE_HEIGHT = 10;
 	public static final int SQUARE_WIDTH = 10;
 	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
+	Collection<Entity> entityList = new HashSet<>();
 
 	public Board() {
 		for (int i = 0; i < SQUARE_HEIGHT; i++) {
@@ -20,7 +24,7 @@ public class Board {
 		}
 	}
 
-	public void add(Entity entity) {
+	private void appendEntity(Entity entity) {
 		checkInBoardBounds(entity);
 		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
 			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
@@ -29,7 +33,7 @@ public class Board {
 		}
 	}
 
-	public void remove(Entity entity) {
+	public void removeEntity(Entity entity) {
 		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
 			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
 				matrix[i][j].remove(entity);
@@ -37,11 +41,11 @@ public class Board {
 		}
 	}
 
-	public void move(Movable entity) throws InterruptedException {
+	public void moveByEntity(Movable entity) throws InterruptedException {
 		checkInBoardBounds(entity);
 		// ControllerOfEntityMovable controller = new
 		// ControllerOfEntityMovable(entity.center);
-		entity.move(matrix, entity, Direction.RIGHT);
+		entity.move(Direction.RIGHT);
 	}
 
 	public Square get(int x, int y) {
@@ -58,5 +62,31 @@ public class Board {
 			builder.append("\n");
 		}
 		return builder.toString();
+	}
+
+	public void update() {
+		removeAll();
+		moveAll();
+		appendAll();
+	}
+
+	public void addEntity(Entity entity) {
+		entityList.add(entity);
+	}
+
+	private void moveAll() {
+		// tomar la lista de entidades y decirle a todas las entidades (las que se
+		// puedan mover) que se muevan.
+	}
+
+	private void appendAll() {
+		// uso un foreach recorro toda la lista de entidades que deberia tener creada en
+		// mi board,
+		// en vez de pasarle una sola entidad (como tanque) le paso la lista.
+		// Y con el addEntity voy agregando
+	}
+
+	private void removeAll() {
+		// reemplazar toda la matriz, crear una matriz nueva.
 	}
 }

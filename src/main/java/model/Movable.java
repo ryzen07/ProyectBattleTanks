@@ -8,23 +8,18 @@ public class Movable extends Entity {
 		this.direction = direction;
 	}
 
-	protected void move(Square[][] matriz, Movable entity, Direction direction) {
-
-		for (int i = entity.getMinorX(); i <= entity.getMayorX(); i++) {
-			for (int j = entity.getMinorY(); j <= entity.getMayorY(); j++) {
-				if (direction.equals(Direction.RIGHT)) {
-					matriz[i][j + 2].add(entity);
-				}
-				if (direction.equals(Direction.LEFT)) {
-					matriz[i][j - 1].add(entity);
-				}
-				if (direction.equals(Direction.DOWN)) {
-					matriz[i + 1][j].add(entity);
-				}
-				if (direction.equals(Direction.UP)) {
-					matriz[i - 1][j].add(entity);
-				}
-			}
+	protected void move(Direction direction) {
+		if (direction.equals(Direction.RIGHT)) {
+			center = new Position(6, 5);
+		}
+		if (direction.equals(Direction.LEFT)) {
+			center = new Position(4, 5);
+		}
+		if (direction.equals(Direction.DOWN)) {
+			center = new Position(5, 6);
+		}
+		if (direction.equals(Direction.UP)) {
+			center = new Position(5, 4);
 		}
 	}
 
