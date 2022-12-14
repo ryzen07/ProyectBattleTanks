@@ -41,7 +41,7 @@ public class Board {
 		}
 	}
 
-	public void moveByEntity(Movable entity) throws InterruptedException {
+	public void move(Movable entity) throws InterruptedException {
 		checkInBoardBounds(entity);
 		// ControllerOfEntityMovable controller = new
 		// ControllerOfEntityMovable(entity.center);
@@ -91,6 +91,9 @@ public class Board {
 	}
 
 	private void removeAll() {
-		// reemplazar toda la matriz, crear una matriz nueva.
+		for (Entity entity : entities) {
+			removeEntity(entity);
+			// reemplazar toda la matriz, crear una matriz nueva.
+		}
 	}
 }
