@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Observable;
+
 public class Movable extends Entity {
 	private final Direction direction;
 
@@ -8,7 +10,7 @@ public class Movable extends Entity {
 		this.direction = direction;
 	}
 
-	protected void move(Direction direction) {
+	public void move(Direction direction) {
 		if (direction.equals(Direction.RIGHT)) {
 			center = new Position(6, 5);
 		}
@@ -23,6 +25,15 @@ public class Movable extends Entity {
 		}
 	}
 
+	/*
+	 * public void move2(Direction direction) { switch (direction) { case LEFT: x =
+	 * x - VELOCITY; break; case UP: y = y - VELOCITY; break; case RIGHT: x = x +
+	 * VELOCITY; break; case DOWN: y = y + VELOCITY; break;
+	 * 
+	 * default: break; } updated();
+	 * 
+	 * }
+	 */
 	protected void collision() {
 	}
 
@@ -44,5 +55,16 @@ public class Movable extends Entity {
 			return super.getYRadius();
 		}
 		return super.getXRadius();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void updated() {
+		setChanged();
+		notifyObservers();
 	}
 }

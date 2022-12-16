@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Entity {
+import java.util.Observable;
+
+public abstract class Entity extends Observable {
 	protected Position center;
 	private final int majorRadius, minorRadius;
 
@@ -37,5 +39,10 @@ public abstract class Entity {
 	@Override
 	public String toString() {
 		return "#";
+	}
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+
 	}
 }
