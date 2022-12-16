@@ -15,15 +15,15 @@ public class TankView extends JPanel implements Observer {
 	public TankView(Tank tank) {
 		this.tank = tank;
 		setBackground(Color.red);// New.
-		paintCar();
+		paintTank();
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		paintCar();
+		paintTank();
 	}
 
-	private void paintCar() {
+	private void paintTank() {
 		setBounds(tank.getCenter().getX(), tank.getCenter().getY(), Tank.MAJOR_RADIUS, Tank.MINOR_RADIUS);
 	}
 }
