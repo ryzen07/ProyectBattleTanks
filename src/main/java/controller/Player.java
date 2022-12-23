@@ -5,23 +5,19 @@ import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.Board;
 import model.Direction;
 import model.Tank;
-import view.Window;
 
 public class Player implements KeyListener {
 
-	private final Window window;
 	private final Tank tank;
+	private final Board board = new Board();
 	private final Map<Integer, Direction> directions = new HashMap<>();
 
-	public Player(Tank tank, Window window) {
+	public Player(Tank tank) {
 		fillDirections();
-		this.window = window;
 		this.tank = tank;
-		tank.addObserver(window.getCarView());
-		window.addKeyListener(this);
-		window.setVisible(true);
 		// chronometer.addObserver(chronometerView);
 	}
 
@@ -41,7 +37,7 @@ public class Player implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		Integer key = e.getKeyCode();
-		if (directions.containsKey(key)) {
+		if (directions.containsKey(key) && board.checkTankInBoardBounds(tank)) {
 			tank.move(directions.get(key));
 		}
 	}

@@ -14,7 +14,7 @@ public class TankView extends JPanel implements Observer {
 
 	public TankView(Tank tank) {
 		this.tank = tank;
-		setBackground(Color.red);// New.
+		setBackground(Color.red);
 		paintTank();
 	}
 
@@ -25,5 +25,6 @@ public class TankView extends JPanel implements Observer {
 
 	private void paintTank() {
 		setBounds(tank.getCenter().getX(), tank.getCenter().getY(), Tank.MAJOR_RADIUS, Tank.MINOR_RADIUS);
+		tank.Imprimir();
 	}
 }

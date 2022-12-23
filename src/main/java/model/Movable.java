@@ -1,39 +1,31 @@
 package model;
 
-import java.util.Observable;
-
 public class Movable extends Entity {
 	private final Direction direction;
+	private final int speed;
 
-	public Movable(Position center, int majorRadius, int minorRadius, Direction direction) {
+	public Movable(Position center, int majorRadius, int minorRadius, Direction direction, int speed) {
 		super(center, majorRadius, minorRadius);
 		this.direction = direction;
+		this.speed = speed;
 	}
 
 	public void move(Direction direction) {
 		if (direction.equals(Direction.RIGHT)) {
-			center = new Position(6, 5);
+			center = new Position(center.getX() + speed, center.getY());
 		}
 		if (direction.equals(Direction.LEFT)) {
-			center = new Position(4, 5);
+			center = new Position(center.getX() - speed, center.getY());
 		}
 		if (direction.equals(Direction.DOWN)) {
-			center = new Position(5, 6);
+			center = new Position(center.getX(), center.getY() + speed);
 		}
 		if (direction.equals(Direction.UP)) {
-			center = new Position(5, 4);
+			center = new Position(center.getX(), center.getY() - speed);
 		}
+		updated();
 	}
 
-	/*
-	 * public void move2(Direction direction) { switch (direction) { case LEFT: x =
-	 * x - VELOCITY; break; case UP: y = y - VELOCITY; break; case RIGHT: x = x +
-	 * VELOCITY; break; case DOWN: y = y + VELOCITY; break;
-	 * 
-	 * default: break; } updated();
-	 * 
-	 * }
-	 */
 	protected void collision() {
 	}
 
@@ -55,12 +47,6 @@ public class Movable extends Entity {
 			return super.getYRadius();
 		}
 		return super.getXRadius();
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
 	}
 
 	private void updated() {

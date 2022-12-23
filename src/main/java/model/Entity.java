@@ -36,13 +36,19 @@ public abstract class Entity extends Observable {
 		return center.getY() + getYRadius();
 	}
 
+	public void Imprimir() {
+		System.out.println(getMinorX());
+		System.out.println(getMayorX());
+		System.out.println(getMinorY());
+		System.out.println(getMayorY());
+	}
+
+	public Position getPosition() {
+		return center;
+	}
+
 	@Override
 	public String toString() {
 		return "#";
-	}
-
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
 	}
 }

@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Board {
-	public static final int SQUARE_HEIGHT = 10;
-	public static final int SQUARE_WIDTH = 10;
+	public static final int SQUARE_HEIGHT = 100;
+	public static final int SQUARE_WIDTH = 100;
 	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
 	Collection<Entity> entities = new HashSet<>();
 
@@ -21,6 +21,16 @@ public class Board {
 		if (entity.getMinorY() < 0 || entity.getMayorY() < 0 || entity.getMinorX() >= SQUARE_HEIGHT
 				|| entity.getMayorX() >= SQUARE_WIDTH) {
 			throw new EntityOutOfRange();
+		}
+	}
+
+	public boolean checkTankInBoardBounds(Entity entity) {
+		if (entity.getMinorY() > 0 && entity.getMayorY() > 0 && entity.getMinorX() > 0 && entity.getMayorX() < 0
+				&& entity.getMinorY() < SQUARE_WIDTH && entity.getMayorY() < SQUARE_WIDTH
+				&& entity.getMinorX() < SQUARE_HEIGHT && entity.getMayorX() < SQUARE_HEIGHT) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -64,36 +74,14 @@ public class Board {
 		return builder.toString();
 	}
 
-	public void update() {
-		removeAll();
-		moveAll();
-		addAll();
-	}
-
 	public void add(Entity entity) {
 		entities.add(entity);
 		appendEntity(entity);
 	}
 
-	private void moveAll() {
-		// tomar la lista de entidades y decirle a todas las entidades (las que se
-		// puedan mover) que se muevan.
-	}
-
 	private void addAll() {
 		for (Entity entity : entities) {
 			appendEntity(entity);
-		}
-		// uso un foreach recorro toda la lista de entidades que deberia tener creada en
-		// mi board,
-		// en vez de pasarle una sola entidad (como tanque) le paso la lista.
-		// Y con el addEntity voy agregando
-	}
-
-	private void removeAll() {
-		for (Entity entity : entities) {
-			removeEntity(entity);
-			// reemplazar toda la matriz, crear una matriz nueva.
 		}
 	}
 }

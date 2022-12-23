@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.FlowLayout;
 import java.util.Observer;
 
 import javax.swing.JFrame;
@@ -21,14 +20,13 @@ public class Window extends JFrame {
 		tankView = new TankView(tank);
 		content.add(tankView);
 		content.setSize(Constants.WINDOWS_WIDTH, Constants.WINDOWS_HEIGHT);
-		content.setLayout(new FlowLayout());
+		content.setLayout(null);
 		setContentPane(content);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
-	public Observer getCarView() {
+	public Observer getTankView() {
 		return tankView;
 	}
-
 }
