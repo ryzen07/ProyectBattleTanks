@@ -51,12 +51,11 @@ public class Board {
 		}
 	}
 
-	public void move(Movable entity) throws InterruptedException {
-		checkInBoardBounds(entity);
-		// ControllerOfEntityMovable controller = new
-		// ControllerOfEntityMovable(entity.center);
-		entity.move(Direction.RIGHT);
-	}
+	/*
+	 * public void move(Movable entity) throws InterruptedException {
+	 * checkInBoardBounds(entity); // ControllerOfEntityMovable controller = new //
+	 * // ControllerOfEntityMovable(entity.center); entity.move(Direction.RIGHT); }
+	 */
 
 	public Square get(int x, int y) {
 		return matrix[x][y];
@@ -82,6 +81,7 @@ public class Board {
 	private void addAll() {
 		for (Entity entity : entities) {
 			appendEntity(entity);
+
 		}
 	}
 }

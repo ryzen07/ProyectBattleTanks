@@ -25,6 +25,7 @@ public class Controller {
 	}
 
 	public void initialize() {
-		game = Game.getInstance();
+		// game = Game.getInstance();
+		game = new Game();
 	}
 }

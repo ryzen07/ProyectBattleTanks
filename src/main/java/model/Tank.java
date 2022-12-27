@@ -1,5 +1,7 @@
 package model;
 
+import model.directions.Direction;
+
 public class Tank extends Movable {
 
 	private static final int SPEED = 1;
@@ -11,24 +13,19 @@ public class Tank extends Movable {
 
 	// private arrayList<powerup()> activePower;
 
-	/*
-	 * public Tank(boolean allied, int life, Direction direction, int x, int y) {
-	 * super(new Position(x, y), HEIGHT, WIDTH); this.allied = allied; this.life =
-	 * life; }
-	 */
-
-	public Tank(Direction direction, int x, int y) {
-		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, direction, SPEED);
+	public Tank(int x, int y) {
+		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, SPEED);
 	}
 
 	/*
 	 * public int getLife() { return life; }
 	 */
 
-	public Bullet shoot() {
-		return new Bullet(new Position(2, 3), Direction.UP);
-
-	}
+	/*
+	 * public Bullet shoot() { return new Bullet(new Position(2, 3), Direction.UP);
+	 *
+	 * }
+	 */
 
 	public Position getCenter() {
 		return center;
@@ -41,5 +38,10 @@ public class Tank extends Movable {
 	@Override
 	public String toString() {
 		return "x";
+	}
+
+	public void move(Direction direction) {
+		direction.apply(this);
+		updated();
 	}
 }

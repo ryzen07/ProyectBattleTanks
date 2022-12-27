@@ -6,7 +6,7 @@ import view.Window;
 public class Game {
 	private static final Game game = new Game();
 
-	private Game() {
+	public Game() {
 		Level level = new Level();
 		Tank tank = level.getTank();
 		Window window = new Window(tank);
