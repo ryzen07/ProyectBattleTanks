@@ -17,17 +17,16 @@ public class Player implements KeyListener {
 	private final Tank tank;
 	private static final Map<Integer, Direction> KEY_TRANSLATOR = new HashMap<>();
 
-	public Player(Tank tank) {
-		fillDirections();
-		this.tank = tank;
-		// chronometer.addObserver(chronometerView);
-	}
-
-	private void fillDirections() {
+	static {
 		KEY_TRANSLATOR.put(KeyEvent.VK_LEFT, new Left());
 		KEY_TRANSLATOR.put(KeyEvent.VK_RIGHT, new Right());
 		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Up());
 		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Down());
+	} // usar singleton
+
+	public Player(Tank tank) {
+		this.tank = tank;
+		// chronometer.addObserver(chronometerView);
 	}
 
 	@Override

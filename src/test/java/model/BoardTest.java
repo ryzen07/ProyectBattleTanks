@@ -38,7 +38,7 @@ public class BoardTest {
 		checkTankPosition(tank, board);
 	}
 
-	@Test(expected = EntityOutOfRange.class)
+	@Test(expected = EntityOutOfRangeException.class)
 	public void whenTankIsAddedOutOfRangeThenThrowException() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, Board.SQUARE_WIDTH - Tank.MAJOR_RADIUS,

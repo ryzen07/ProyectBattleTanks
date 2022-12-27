@@ -17,20 +17,14 @@ public class Board {
 		}
 	}
 
-	public void checkInBoardBounds(Entity entity) {
-		if (entity.getMinorY() < 0 || entity.getMayorY() < 0 || entity.getMinorX() >= SQUARE_HEIGHT
-				|| entity.getMayorX() >= SQUARE_WIDTH) {
-			throw new EntityOutOfRange();
-		}
+	public boolean isInBoardBounds(Entity entity) {
+		return !(entity.getMinorY() < 0 || entity.getMinorX() < 0 || entity.getMayorY() >= SQUARE_HEIGHT
+				|| entity.getMayorX() >= SQUARE_WIDTH);
 	}
 
-	public boolean checkTankInBoardBounds(Entity entity) {
-		if (entity.getMinorY() > 0 && entity.getMayorY() > 0 && entity.getMinorX() > 0 && entity.getMayorX() < 0
-				&& entity.getMinorY() < SQUARE_WIDTH && entity.getMayorY() < SQUARE_WIDTH
-				&& entity.getMinorX() < SQUARE_HEIGHT && entity.getMayorX() < SQUARE_HEIGHT) {
-			return true;
-		} else {
-			return false;
+	public void checkInBoardBounds(Entity entity) {
+		if (!isInBoardBounds(entity)) {
+			throw new EntityOutOfRangeException();
 		}
 	}
 
