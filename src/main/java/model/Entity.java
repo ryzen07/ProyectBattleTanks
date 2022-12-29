@@ -5,6 +5,7 @@ import java.util.Observable;
 public abstract class Entity extends Observable {
 	protected Position center;
 	private final int majorRadius, minorRadius;
+	public boolean move = true;
 
 	public Entity(Position center, int majorRadius, int minorRadius) {
 		this.center = center;
@@ -37,10 +38,20 @@ public abstract class Entity extends Observable {
 	}
 
 	public void Imprimir() {
-		System.out.println(getMinorX());
-		System.out.println(getMayorX());
-		System.out.println(getMinorY());
 		System.out.println(getMayorY());
+		/*
+		 * System.out.println(getMayorX()); System.out.println(getMinorY());
+		 * System.out.println(getMayorY());
+		 */
+	}
+
+	public boolean getMove() {
+		return move;
+	}
+
+	public boolean setMove(boolean move) {
+		this.move = move;
+		return move;
 	}
 
 	public Position getPosition() {

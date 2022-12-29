@@ -7,7 +7,6 @@ public class Tank extends Movable {
 	private static final int SPEED = 1;
 	public static final int MAJOR_RADIUS = 10;
 	public static final int MINOR_RADIUS = 20;
-
 	// private final boolean allied;
 	// private final int life;
 
@@ -42,6 +41,8 @@ public class Tank extends Movable {
 
 	public void move(Direction direction) {
 		direction.apply(this);
-		updated();
+		if (getMove()) {
+			updated();
+		}
 	}
 }

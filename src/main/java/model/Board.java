@@ -4,22 +4,38 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Board {
-	public static final int SQUARE_HEIGHT = 100;
-	public static final int SQUARE_WIDTH = 100;
-	Square matrix[][] = new Square[SQUARE_HEIGHT][SQUARE_WIDTH];
+
+	Square matrix[][] = new Square[Constants.SQUARE_HEIGHT][Constants.SQUARE_WIDTH];
 	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
-		for (int i = 0; i < SQUARE_HEIGHT; i++) {
-			for (int j = 0; j < SQUARE_WIDTH; j++) {
+		for (int i = 0; i < Constants.SQUARE_HEIGHT; i++) {
+			for (int j = 0; j < Constants.SQUARE_WIDTH; j++) {
 				matrix[i][j] = new Square();
 			}
 		}
 	}
 
+	/*
+	 * public boolean isInBoardBounds(Entity entity) { return !(entity.getMinorY() <
+	 * 0 || entity.getMinorX() < 0 || entity.getMayorY() >= SQUARE_HEIGHT ||
+	 * entity.getMayorX() >= SQUARE_WIDTH); }
+	 */
+
+	/*
+	 * public boolean isInBoardBounds(Entity entity) { if (entity.getMinorY() > 0 ||
+	 * entity.getMinorX() > 0 || entity.getMayorY() >= SQUARE_HEIGHT ||
+	 * entity.getMayorX() >= SQUARE_WIDTH) { entity.setMove(true);
+	 * System.out.print("asd"); return true; } entity.setMove(false); return false;
+	 * }
+	 */
+
 	public boolean isInBoardBounds(Entity entity) {
-		return !(entity.getMinorY() < 0 || entity.getMinorX() < 0 || entity.getMayorY() >= SQUARE_HEIGHT
-				|| entity.getMayorX() >= SQUARE_WIDTH);
+		if (entity.getMinorX() > 0) {
+			System.out.println("hola");
+		}
+		entity.setMove(false);
+		return false;
 	}
 
 	public void checkInBoardBounds(Entity entity) {

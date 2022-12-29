@@ -8,6 +8,7 @@ public class Level {
 
 	public void mapAdd() {
 		map.add(tank);
+
 	}
 
 	public Tank getTank() {

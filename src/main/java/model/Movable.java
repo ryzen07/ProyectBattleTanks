@@ -17,21 +17,13 @@ public class Movable extends Entity {
 	protected void collision() {
 	}
 
-	@Override
-	protected int getXRadius() {
-		if (direction.isHorizontal()) {
-			return super.getYRadius();
-		}
-		return super.getXRadius();
-	}
-
-	@Override
-	protected int getYRadius() {
-		if (direction.isHorizontal()) {
-			return super.getXRadius();
-		}
-		return super.getYRadius();
-	}
+	/*
+	 * @Override protected int getXRadius() { if (direction.isHorizontal()) { return
+	 * super.getYRadius(); } return super.getXRadius(); }
+	 *
+	 * @Override protected int getYRadius() { if (direction.isHorizontal()) { return
+	 * super.getXRadius(); } return super.getYRadius(); }
+	 */
 
 	protected void updated() {
 		setChanged();
@@ -40,6 +32,7 @@ public class Movable extends Entity {
 
 	public void increaseCenterX() {
 		center = new Position(center.getX() + speed, center.getY());
+
 	}
 
 	public void decreaseCenterX() {
@@ -56,5 +49,64 @@ public class Movable extends Entity {
 
 	public void setDirection(Direction direction) {
 		this.direction = direction;
+	}
+
+	public void checkNextPositionToMove(Entity entity) {
+		isInBoardBounds(entity);
+	}
+
+	private boolean limitMinorYCheck(Entity entity) {
+		return entity.getMinorY() == Constants.LIMITMINORY;
+	}
+
+	private boolean limitMinorXCheck(Entity entity) {
+		return entity.getMinorX() == Constants.LIMITMINORX;
+	}
+
+	private boolean limitMayorXCheck(Entity entity) {
+		return entity.getMayorX() >= Constants.SQUARE_WIDTH;
+	}
+
+	private boolean limitMayorYCheck(Entity entity) {
+		return entity.getMayorY() >= Constants.SQUARE_HEIGHT;
+	}
+
+	private void reverseValueMinorY(Entity entity) {
+		if (limitMinorYCheck(entity)) {
+			entity.setMove(false);
+			increaseCenterY();
+			entity.setMove(true);
+		}
+	}
+
+	private void reverseValueMinorX(Entity entity) {
+		if (limitMinorXCheck(entity)) {
+			entity.setMove(false);
+			increaseCenterX();
+			entity.setMove(true);
+		}
+	}
+
+	private void reverseValueMayorX(Entity entity) {
+		if (limitMayorXCheck(entity)) {
+			entity.setMove(false);
+			decreaseCenterX();
+			entity.setMove(true);
+		}
+	}
+
+	private void reverseValueMayorY(Entity entity) {
+		if (limitMayorYCheck(entity)) {
+			entity.setMove(false);
+			decreaseCenterY();
+			entity.setMove(true);
+		}
+	}
+
+	public void isInBoardBounds(Entity entity) {
+		reverseValueMinorX(entity);
+		reverseValueMinorY(entity);
+		reverseValueMayorX(entity);
+		reverseValueMayorY(entity);
 	}
 }

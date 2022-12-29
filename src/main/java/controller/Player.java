@@ -38,6 +38,7 @@ public class Player implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		Integer key = e.getKeyCode();
 		if (KEY_TRANSLATOR.containsKey(key)) {
+			tank.checkNextPositionToMove(tank);
 			tank.move(KEY_TRANSLATOR.get(key));
 		}
 	}
