@@ -1,17 +1,19 @@
 package model;
 
 import model.directions.Direction;
+import model.directions.Left;
 
 public class Movable extends Entity {
 	private final int speed;
 
 	private final Board board = new Board();
+	protected ORIENTATION orientation;
+	private Direction direction = new Left();
 
-	private Direction direction;
-
-	public Movable(Position center, int majorRadius, int minorRadius, int speed) {
+	public Movable(Position center, int majorRadius, int minorRadius, int speed, ORIENTATION orientation) {
 		super(center, majorRadius, minorRadius);
 		this.speed = speed;
+		this.orientation = orientation;
 	}
 
 	protected void collision() {
@@ -24,10 +26,21 @@ public class Movable extends Entity {
 	 * @Override protected int getYRadius() { if (direction.isHorizontal()) { return
 	 * super.getXRadius(); } return super.getYRadius(); }
 	 */
-
 	protected void updated() {
 		setChanged();
 		notifyObservers();
+	}
+
+	public ORIENTATION getOrientation() {
+		return orientation;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
 	public void increaseCenterX() {
@@ -45,10 +58,6 @@ public class Movable extends Entity {
 
 	public void increaseCenterY() {
 		center = new Position(center.getX(), center.getY() + speed);
-	}
-
-	public void setDirection(Direction direction) {
-		this.direction = direction;
 	}
 
 	public void checkNextPositionToMove(Entity entity) {

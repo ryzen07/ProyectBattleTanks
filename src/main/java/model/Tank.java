@@ -12,8 +12,8 @@ public class Tank extends Movable {
 
 	// private arrayList<powerup()> activePower;
 
-	public Tank(int x, int y) {
-		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, SPEED);
+	public Tank(int x, int y, ORIENTATION orientation) {
+		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, SPEED, orientation);
 	}
 
 	/*
@@ -41,6 +41,7 @@ public class Tank extends Movable {
 
 	public void move(Direction direction) {
 		direction.apply(this);
+
 		if (getMove()) {
 			updated();
 		}

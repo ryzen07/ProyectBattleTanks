@@ -13,5 +13,4 @@ public class Left extends Direction {
 	public boolean isHorizontal() {
 		return true;
 	}
-
 }

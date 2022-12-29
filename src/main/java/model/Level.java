@@ -2,7 +2,9 @@ package model;
 
 public class Level {
 
-	Tank tank = new Tank(11, 21);
+	private ORIENTATION LEFT;
+
+	Tank tank = new Tank(11, 21, LEFT);
 
 	Board map = new Board();
 

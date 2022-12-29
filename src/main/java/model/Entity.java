@@ -37,14 +37,6 @@ public abstract class Entity extends Observable {
 		return center.getY() + getYRadius();
 	}
 
-	public void Imprimir() {
-		System.out.println(getMayorY());
-		/*
-		 * System.out.println(getMayorX()); System.out.println(getMinorY());
-		 * System.out.println(getMayorY());
-		 */
-	}
-
 	public boolean getMove() {
 		return move;
 	}

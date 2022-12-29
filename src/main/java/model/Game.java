@@ -19,4 +19,8 @@ public class Game {
 	public static Game getInstance() {
 		return game;
 	}
+
+	public Game Initialize() {
+		return Game.getInstance();
+	}
 }

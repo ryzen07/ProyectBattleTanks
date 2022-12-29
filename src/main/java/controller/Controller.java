@@ -5,7 +5,8 @@ import model.Game;
 public class Controller {
 
 	public Controller() {
-		Game.getInstance();
+		Game game = new Game();
+		game.Initialize();
 	}
 
 	public void run() throws InterruptedException {
