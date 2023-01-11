@@ -5,17 +5,12 @@ import model.directions.Direction;
 public class Tank extends Movable {
 
 	private static final int SPEED = 1;
-	public static final int MAJOR_RADIUS = 10;
-	public static final int MINOR_RADIUS = 20;
+	public static final int MAJOR_RADIUS = 1;
+	public static final int MINOR_RADIUS = 1;
 	// private final boolean allied;
 	// private final int life;
 
 	// private arrayList<powerup()> activePower;
-
-	public Tank(int x, int y, ORIENTATION orientation) {
-		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, SPEED, orientation);
-	}
-
 	/*
 	 * public int getLife() { return life; }
 	 */
@@ -25,6 +20,9 @@ public class Tank extends Movable {
 	 *
 	 * }
 	 */
+	public Tank(int x, int y, Direction direction) {
+		super(new Position(x, y), MAJOR_RADIUS, MINOR_RADIUS, SPEED, direction);
+	}
 
 	public Position getCenter() {
 		return center;
@@ -39,10 +37,11 @@ public class Tank extends Movable {
 		return "x";
 	}
 
-	public void move(Direction direction) {
-		direction.apply(this);
-
-		if (getMove()) {
+	public void move() {
+		if (hasToMove) {
+			checkNextPositionToMove();
+			getDirection().apply(this);
+			hasToMove = false;
 			updated();
 		}
 	}

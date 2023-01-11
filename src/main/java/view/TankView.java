@@ -30,14 +30,10 @@ public class TankView extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		paintTank();
+
 	}
 
 	private void paintTank() {
-		if (tank.getDirection().isHorizontal()) {
-			setBounds(tank.getCenter().getY(), tank.getCenter().getX(), Tank.MINOR_RADIUS, Tank.MAJOR_RADIUS);
-
-		} else if (!tank.getDirection().isHorizontal()) {
-			setBounds(tank.getCenter().getX(), tank.getCenter().getY(), Tank.MAJOR_RADIUS, Tank.MINOR_RADIUS);
-		}
+		setBounds(tank.getMinorX(), tank.getMinorY(), tank.getXRadius(), tank.getYRadius());
 	}
 }

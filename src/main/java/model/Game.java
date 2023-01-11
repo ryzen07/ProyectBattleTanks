@@ -5,22 +5,29 @@ import view.Window;
 
 public class Game {
 	private static final Game game = new Game();
+	private Level level;
 
-	public Game() {
-		Level level = new Level();
-		Tank tank = level.getTank();
-		Window window = new Window(tank);
-		Player player = new Player(tank);
-		tank.addObserver(window.getTankView());
-		window.addKeyListener(player);
-		window.setVisible(true);
+	private Game() {
+
 	}
 
 	public static Game getInstance() {
 		return game;
 	}
 
-	public Game Initialize() {
-		return Game.getInstance();
+	public void initialize() {
+		level = new Level();
+		Tank tank = level.getTank();
+		Board board = level.getMap();
+		Window window = new Window(tank, board);
+		Player player = new Player(tank);
+		tank.addObserver(window.getTankView());
+		board.addObserver(window.getBoardView());
+		window.addKeyListener(player);
+		window.setVisible(true);
+	}
+
+	public Level getLevel() {
+		return level;
 	}
 }

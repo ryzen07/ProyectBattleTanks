@@ -1,15 +1,25 @@
 package model;
 
+import model.directions.Up;
+
 public class Level {
 
-	private ORIENTATION LEFT;
-
-	Tank tank = new Tank(11, 21, LEFT);
+	Tank tank = new Tank(10, 10, new Up());
 
 	Board map = new Board();
 
-	public void mapAdd() {
-		map.add(tank);
+	public Level() {
+		map.appendEntity(tank);
+	}
+
+	public Board getMap() {
+		return map;
+	}
+
+	public void refreshMap() {
+		map.removeEntity(tank);
+		tank.move();
+		map.appendEntity(tank);
 
 	}
 
