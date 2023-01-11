@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Entity {
+import java.util.Observable;
+
+public abstract class Entity extends Observable {
 	protected Position center;
 	private final int majorRadius, minorRadius;
 
@@ -22,7 +24,7 @@ public abstract class Entity {
 		return center.getX() - getXRadius();
 	}
 
-	public int getMayorX() {
+	public int getMajorX() {
 		return center.getX() + getXRadius();
 	}
 
@@ -30,8 +32,12 @@ public abstract class Entity {
 		return center.getY() - getYRadius();
 	}
 
-	public int getMayorY() {
+	public int getMajorY() {
 		return center.getY() + getYRadius();
+	}
+
+	public Position getPosition() {
+		return center;
 	}
 
 	@Override

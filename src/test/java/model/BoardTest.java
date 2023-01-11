@@ -33,12 +33,12 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionLeft() {
 		Board board = new Board();
-		Tank tank = new Tank(Direction.LEFT, 3, 2);
+		Tank tank = new Tank(Direction.LEFT, 2, 2);
 		board.add(tank);
 		checkTankPosition(tank, board);
 	}
 
-	@Test(expected = EntityOutOfRange.class)
+	@Test(expected = EntityOutOfRangeException.class)
 	public void whenTankIsAddedOutOfRangeThenThrowException() {
 		Board board = new Board();
 		Tank tank = new Tank(Direction.UP, Board.SQUARE_WIDTH - Tank.MAJOR_RADIUS,
