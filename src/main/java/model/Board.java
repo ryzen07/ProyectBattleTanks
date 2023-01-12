@@ -10,9 +10,9 @@ public class Board extends Observable {
 	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
-		for (int i = 0; i < Constants.SQUARE_HEIGHT; i++) {
-			for (int j = 0; j < Constants.SQUARE_WIDTH; j++) {
-				matrix[i][j] = new Square();
+		for (int x = 0; x < Constants.SQUARE_HEIGHT; x++) {
+			for (int y = 0; y < Constants.SQUARE_WIDTH; y++) {
+				matrix[x][y] = new Square();
 			}
 		}
 	}
@@ -59,20 +59,15 @@ public class Board extends Observable {
 
 	@Override
 	public String toString() {
+
 		StringBuilder sb = new StringBuilder();
+
 		for (int i = matrix[0].length - 1; i >= 0; i--) {
 			for (Square[] element : matrix) {
 				sb.append(element[i]).append(" ");
 			}
-			builder.append("\n");
+			sb.append("\n");
 		}
-		return builder.toString();
+		return sb.toString();
 	}
 }
-
-/*
- * remove recorriendo todo el mapa public void removeEntity(Entity entity) { for
- * (int i = 0; i < Constants.SQUARE_HEIGHT; i++) { for (int j = 0; j <
- * Constants.SQUARE_WIDTH; j++) { if (matrix[i][j].contains(entity)) {
- * matrix[i][j].remove(entity); } } } }
- */

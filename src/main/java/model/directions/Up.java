@@ -7,7 +7,7 @@ public class Up extends Direction {
 
 	@Override
 	protected void move(Movable movable) {
-		movable.decreaseCenterX();
+		movable.increaseCenterY();
 
 	}
 

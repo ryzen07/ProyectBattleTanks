@@ -56,7 +56,6 @@ public class Movable extends Entity {
 
 	public void increaseCenterX() {
 		center = new Position(center.getX() + speed, center.getY());
-
 	}
 
 	public void decreaseCenterX() {
