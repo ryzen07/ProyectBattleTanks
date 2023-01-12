@@ -6,7 +6,7 @@ public class Right extends Direction {
 
 	@Override
 	protected void move(Movable movable) {
-		movable.increaseCenterY();
+		movable.increaseCenterX();
 	}
 
 	@Override

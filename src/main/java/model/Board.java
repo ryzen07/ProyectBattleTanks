@@ -10,9 +10,9 @@ public class Board extends Observable {
 	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
-		for (int i = 0; i < Constants.SQUARE_HEIGHT; i++) {
-			for (int j = 0; j < Constants.SQUARE_WIDTH; j++) {
-				matrix[i][j] = new Square();
+		for (int x = 0; x < Constants.SQUARE_HEIGHT; x++) {
+			for (int y = 0; y < Constants.SQUARE_WIDTH; y++) {
+				matrix[x][y] = new Square();
 			}
 		}
 	}
@@ -39,18 +39,18 @@ public class Board extends Observable {
 
 	public void appendEntity(Entity entity) {
 		checkInBoardBounds(entity);
-		for (int i = entity.getMinorX(); i <= entity.getMajorX(); i++) {
-			for (int j = entity.getMinorY(); j <= entity.getMajorY(); j++) {
-				matrix[i][j].add(entity);
+		for (int x = entity.getMinorX(); x <= entity.getMajorX(); x++) {
+			for (int y = entity.getMinorY(); y <= entity.getMajorY(); y++) {
+				matrix[x][y].add(entity);
 			}
 		}
 	}
 
 	public void removeEntity(Entity entity) {
-		for (int i = entity.getMinorX(); i <= entity.getMajorX(); i++) {
-			for (int j = entity.getMinorY(); j <= entity.getMajorY(); j++) {
-				if (matrix[i][j].contains(entity)) {
-					matrix[i][j].remove(entity);
+		for (int x = entity.getMinorX(); x <= entity.getMajorX(); x++) {
+			for (int y = entity.getMinorY(); y <= entity.getMajorY(); y++) {
+				if (matrix[x][y].contains(entity)) {
+					matrix[x][y].remove(entity);
 				}
 			}
 		}
@@ -62,22 +62,15 @@ public class Board extends Observable {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (Square[] row : matrix) {
-			for (Square square : row) {
-				if (!square.isEmpty()) {
-				}
-				builder.append(square.toString());
+
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = matrix[0].length - 1; i >= 0; i--) {
+			for (Square[] element : matrix) {
+				sb.append(element[i]).append(" ");
 			}
-			builder.append("\n");
+			sb.append("\n");
 		}
-		return builder.toString();
+		return sb.toString();
 	}
 }
-
-/*
- * remove recorriendo todo el mapa public void removeEntity(Entity entity) { for
- * (int i = 0; i < Constants.SQUARE_HEIGHT; i++) { for (int j = 0; j <
- * Constants.SQUARE_WIDTH; j++) { if (matrix[i][j].contains(entity)) {
- * matrix[i][j].remove(entity); } } } }
- */

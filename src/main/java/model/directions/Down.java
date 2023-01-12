@@ -6,7 +6,7 @@ public class Down extends Direction {
 
 	@Override
 	protected void move(Movable movable) {
-		movable.increaseCenterX();
+		movable.decreaseCenterY();
 		// aca se tiene que setear la direccion u orientacion o algun atributo de los
 		// obj movable que va a definir para donde esta orientado. Entonces para donde
 		// me

@@ -55,7 +55,6 @@ public class Movable extends Entity {
 
 	public void increaseCenterX() {
 		center = new Position(center.getX() + speed, center.getY());
-
 	}
 
 	public void decreaseCenterX() {
@@ -74,42 +73,42 @@ public class Movable extends Entity {
 		isInBoardBounds();
 	}
 
-	private boolean isMinorYInLimit() {
-		return getMinorY() == Constants.LIMITMINORY;
+	private boolean isMinorYOutsideLimit() {
+		return getMinorY() == Constants.LIMITMINORY - 1;
 	}
 
-	private boolean isMinorXInLimit() {
-		return getMinorX() == Constants.LIMITMINORX;
+	private boolean isMinorXOutsideLimit() {
+		return getMinorX() == Constants.LIMITMINORX - 1;
 	}
 
-	private boolean isMayorXInLimit() {
-		return getMajorX() >= Constants.SQUARE_WIDTH;
+	private boolean isMayorXOutsideLimit() {
+		return getMajorX() == Constants.LIMITMAYORX + 1;
 	}
 
-	private boolean isMayorYinLimit() {
-		return getMajorY() >= Constants.SQUARE_HEIGHT;
+	private boolean isMayorYOutsideLimit() {
+		return getMajorY() == Constants.LIMITMAYORY + 1;
 	}
 
 	private void reverseValueMinorY() {
-		if (isMinorYInLimit()) {
+		if (isMinorYOutsideLimit()) {
 			increaseCenterY();
 		}
 	}
 
 	private void reverseValueMinorX() {
-		if (isMinorXInLimit()) {
+		if (isMinorXOutsideLimit()) {
 			increaseCenterX();
 		}
 	}
 
 	private void reverseValueMajorX() {
-		if (isMayorXInLimit()) {
+		if (isMayorXOutsideLimit()) {
 			decreaseCenterX();
 		}
 	}
 
 	private void reverseValueMajorY() {
-		if (isMayorYinLimit()) {
+		if (isMayorYOutsideLimit()) {
 			decreaseCenterY();
 		}
 	}

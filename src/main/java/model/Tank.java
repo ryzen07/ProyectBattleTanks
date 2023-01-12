@@ -39,8 +39,8 @@ public class Tank extends Movable {
 
 	public void move() {
 		if (hasToMove) {
-			checkNextPositionToMove();
 			getDirection().apply(this);
+			checkNextPositionToMove();
 			hasToMove = false;
 			updated();
 		}

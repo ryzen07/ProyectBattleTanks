@@ -37,7 +37,6 @@ public class Player implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		Integer key = e.getKeyCode();
-
 		if (KEY_TRANSLATOR.containsKey(key)) {
 			tank.setDirection(KEY_TRANSLATOR.get(key));
 			tank.setHasToMove(true);

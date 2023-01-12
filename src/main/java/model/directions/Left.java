@@ -6,7 +6,7 @@ public class Left extends Direction {
 
 	@Override
 	protected void move(Movable movable) {
-		movable.decreaseCenterY();
+		movable.decreaseCenterX();
 	}
 
 	@Override
