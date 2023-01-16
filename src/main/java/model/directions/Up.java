@@ -1,6 +1,7 @@
 package model.directions;
 
 import model.Movable;
+import model.Position;
 
 public class Up extends Direction {
 
@@ -15,4 +16,9 @@ public class Up extends Direction {
 		return false;
 	}
 
+	@Override
+	public Position getNextPotencialPosition(Movable movable) {
+
+		return new Position(movable.getPosition().getX(), movable.getPosition().getY() + movable.getSpeed());
+	}
 }

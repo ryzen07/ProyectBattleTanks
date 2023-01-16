@@ -12,20 +12,20 @@ import model.directions.Left;
 import model.directions.Right;
 import model.directions.Up;
 
-public class Player implements KeyListener {
+public class PlayerTwo implements KeyListener {
 
-	private final Movable tank;
+	private final Movable tanktwo;
 	private static final Map<Integer, Direction> KEY_TRANSLATOR = new HashMap<>();
 
 	static {
-		KEY_TRANSLATOR.put(KeyEvent.VK_LEFT, new Left());
-		KEY_TRANSLATOR.put(KeyEvent.VK_RIGHT, new Right());
-		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Up());
-		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Down());
+		KEY_TRANSLATOR.put(KeyEvent.VK_NUMPAD1, new Left());
+		KEY_TRANSLATOR.put(KeyEvent.VK_NUMPAD3, new Right());
+		KEY_TRANSLATOR.put(KeyEvent.VK_NUMPAD5, new Up());
+		KEY_TRANSLATOR.put(KeyEvent.VK_NUMPAD2, new Down());
 	} // usar singleton
 
-	public Player(Movable tank) {
-		this.tank = tank;
+	public PlayerTwo(Movable tanktwo) {
+		this.tanktwo = tanktwo;
 		// chronometer.addObserver(chronometerView);
 	}
 
@@ -37,10 +37,9 @@ public class Player implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		Integer key = e.getKeyCode();
-
 		if (KEY_TRANSLATOR.containsKey(key)) {
-			tank.setDirection(KEY_TRANSLATOR.get(key));
-			tank.setHasToMove(true);
+			tanktwo.setDirection(KEY_TRANSLATOR.get(key));
+			tanktwo.setHasToMove(true);
 		}
 	}
 

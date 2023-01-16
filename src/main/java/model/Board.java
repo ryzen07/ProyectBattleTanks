@@ -17,31 +17,28 @@ public class Board extends Observable {
 		}
 	}
 
-	/*
-	 * public boolean isInBoardBounds(Entity entity) { return !(entity.getMinorY() <
-	 * 0 || entity.getMinorX() < 0 || entity.getMajorY() >= SQUARE_HEIGHT ||
-	 * entity.getMajorX() >= SQUARE_WIDTH); }
-	 */
-
-	/*
-	 * public boolean isInBoardBounds(Entity entity) { if (entity.getMinorY() > 0 ||
-	 * entity.getMinorX() > 0 || entity.getMajorY() >= SQUARE_HEIGHT ||
-	 * entity.getMajorX() >= SQUARE_WIDTH) { entity.setMove(true);
-	 * System.out.print("asd"); return true; } entity.setMove(false); return false;
-	 * }
-	 */
-
-	public void checkInBoardBounds(Entity entity) {
-		if (entity.getMinorX() < 0) {
-			throw new EntityOutOfRangeException();
+	public boolean checkInBoardBounds(int minorX, int mayorX, int minorY, int mayorY) {
+		if (minorX < 0) {
+			return false;
 		}
+		if (mayorX > Constants.LIMIT_MAJOR_X - 1) {
+			return false;
+		}
+		if (minorY < 0) {
+			return false;
+		}
+		if (mayorY > Constants.LIMIT_MAJOR_Y - 1) {
+			return false;
+		}
+		return true;
 	}
 
 	public void appendEntity(Entity entity) {
-		checkInBoardBounds(entity);
-		for (int i = entity.getMinorX(); i <= entity.getMajorX(); i++) {
-			for (int j = entity.getMinorY(); j <= entity.getMajorY(); j++) {
-				matrix[i][j].add(entity);
+		if (checkInBoardBounds(entity.getMinorX(), entity.getMajorX(), entity.getMinorY(), entity.getMajorY())) {
+			for (int x = entity.getMinorX(); x <= entity.getMajorX(); x++) {
+				for (int y = entity.getMinorY(); y <= entity.getMajorY(); y++) {
+					matrix[x][y].add(entity);
+				}
 			}
 		}
 	}
@@ -62,12 +59,10 @@ public class Board extends Observable {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for (Square[] row : matrix) {
-			for (Square square : row) {
-				if (!square.isEmpty()) {
-				}
-				builder.append(square.toString());
+		StringBuilder sb = new StringBuilder();
+		for (int i = matrix[0].length - 1; i >= 0; i--) {
+			for (Square[] element : matrix) {
+				sb.append(element[i]).append(" ");
 			}
 			builder.append("\n");
 		}

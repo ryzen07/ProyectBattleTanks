@@ -1,6 +1,7 @@
 package model.directions;
 
 import model.Movable;
+import model.Position;
 
 public class Down extends Direction {
 
@@ -18,5 +19,11 @@ public class Down extends Direction {
 	@Override
 	public boolean isHorizontal() {
 		return false;
+	}
+
+	@Override
+	public Position getNextPotencialPosition(Movable movable) {
+
+		return new Position(movable.getPosition().getX(), movable.getPosition().getY() - movable.getSpeed());
 	}
 }

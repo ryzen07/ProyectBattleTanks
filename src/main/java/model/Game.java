@@ -17,7 +17,8 @@ public class Game {
 
 	public void initialize() {
 		level = new Level();
-		Tank tank = level.getTank();
+		Movable tank = level.getTank();
+		Movable tanktwo = level.getTankTwo();
 		Board board = level.getMap();
 		Window window = new Window(tank, board);
 		Player player = new Player(tank);

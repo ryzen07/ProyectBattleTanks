@@ -13,7 +13,8 @@ public class Movable extends Entity {
 		this.direction = direction;
 	}
 
-	protected void collision() {
+	public int getSpeed() {
+		return speed;
 	}
 
 	public boolean getHasToMove() {
@@ -70,54 +71,27 @@ public class Movable extends Entity {
 		center = new Position(center.getX(), center.getY() + speed);
 	}
 
-	public void checkNextPositionToMove() {
-		isInBoardBounds();
+	public int getPotentialMinorX() {
+		return direction.getNextPotencialPosition(this).getX() - getXRadius();
 	}
 
-	private boolean isMinorYInLimit() {
-		return getMinorY() == Constants.LIMITMINORY;
+	public int getPotentialMajorX() {
+		return direction.getNextPotencialPosition(this).getX() + getXRadius();
 	}
 
-	private boolean isMinorXInLimit() {
-		return getMinorX() == Constants.LIMITMINORX;
+	public int getPotentialMinorY() {
+		return direction.getNextPotencialPosition(this).getY() - getYRadius();
 	}
 
-	private boolean isMayorXInLimit() {
-		return getMajorX() >= Constants.SQUARE_WIDTH;
+	public int getPotentialMajorY() {
+		return direction.getNextPotencialPosition(this).getY() + getYRadius();
 	}
 
-	private boolean isMayorYinLimit() {
-		return getMajorY() >= Constants.SQUARE_HEIGHT;
-	}
-
-	private void reverseValueMinorY() {
-		if (isMinorYInLimit()) {
-			increaseCenterY();
+	public void move() {
+		if (hasToMove) {
+			getDirection().apply(this);
+			updated();
+			hasToMove = false;
 		}
-	}
-
-	private void reverseValueMinorX() {
-		if (isMinorXInLimit()) {
-			increaseCenterX();
-		}
-	}
-
-	private void reverseValueMajorX() {
-		if (isMayorXInLimit()) {
-			decreaseCenterX();
-		}
-	}
-
-	private void reverseValueMajorY() {
-		if (isMayorYinLimit()) {
-			decreaseCenterY();
-		}
-	}
-
-	public void isInBoardBounds() {
-		reverseValueMinorX();
-		reverseValueMinorY();
-		reverseValueMajorX();
-		reverseValueMajorY();
 	}
 }

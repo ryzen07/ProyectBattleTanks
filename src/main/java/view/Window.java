@@ -8,13 +8,13 @@ import javax.swing.WindowConstants;
 
 import model.Board;
 import model.Constants;
-import model.Tank;
+import model.Movable;
 
 public class Window extends JFrame {
 	private final TankView tankView;
 	private final BoardView boardView;
 
-	public Window(Tank tank, Board board) {
+	public Window(Movable tank, Board board) {
 		setResizable(false);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		// setBounds(100, 100, 450, 300);
