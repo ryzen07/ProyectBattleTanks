@@ -4,18 +4,26 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Square {
-	Collection<Entity> objects = new HashSet<>();
+	Collection<Entity> entities = new HashSet<>();
 
 	public void add(Entity object) {
-		objects.add(object);
+		entities.add(object);
+	}
+
+	public void remove(Entity object) {
+		entities.remove(object);
+	}
+
+	public boolean isEmpty() {
+		return entities.isEmpty();
 	}
 
 	public boolean contains(Entity entity) {
-		return objects.contains(entity);
+		return entities.contains(entity);
 	}
 
 	@Override
 	public String toString() {
-		return objects.toString();
+		return entities.toString();
 	}
 }

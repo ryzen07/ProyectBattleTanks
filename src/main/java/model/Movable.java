@@ -1,32 +1,96 @@
 package model;
 
-public class Movable extends Entity {
-	private final Direction direction;
+import model.directions.Direction;
 
-	public Movable(Position center, int majorRadius, int minorRadius, Direction direction) {
+public class Movable extends Entity {
+	private final int speed;
+	private Direction direction;
+	protected boolean hasToMove = false;
+
+	public Movable(Position center, int majorRadius, int minorRadius, int speed, Direction direction) {
 		super(center, majorRadius, minorRadius);
+		this.speed = speed;
 		this.direction = direction;
 	}
 
-	protected void move(Direction direction) {
+	public int getSpeed() {
+		return speed;
 	}
 
-	protected void collision() {
+	public boolean getHasToMove() {
+		return hasToMove;
+	}
+
+	public void setHasToMove(boolean hasToMove) {
+		this.hasToMove = hasToMove;
 	}
 
 	@Override
-	protected int getXRadius() {
-		if (direction.equals(Direction.RIGHT) || direction.equals(Direction.LEFT)) {
+	public int getXRadius() {
+		if (direction.isHorizontal()) {
 			return super.getYRadius();
 		}
 		return super.getXRadius();
 	}
 
 	@Override
-	protected int getYRadius() {
-		if (direction.equals(Direction.UP) || direction.equals(Direction.DOWN)) {
-			return super.getYRadius();
+	public int getYRadius() {
+		if (direction.isHorizontal()) {
+			return super.getXRadius();
 		}
-		return super.getXRadius();
+		return super.getYRadius();
+	}
+
+	protected void updated() {
+		setChanged();
+		notifyObservers();
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
+
+	public void increaseCenterX() {
+		center = new Position(center.getX() + speed, center.getY());
+	}
+
+	public void decreaseCenterX() {
+		center = new Position(center.getX() - speed, center.getY());
+	}
+
+	public void decreaseCenterY() {
+		center = new Position(center.getX(), center.getY() - speed);
+	}
+
+	public void increaseCenterY() {
+		center = new Position(center.getX(), center.getY() + speed);
+	}
+
+	public int getPotentialMinorX() {
+		return direction.getNextPotencialPosition(this).getX() - getXRadius();
+	}
+
+	public int getPotentialMajorX() {
+		return direction.getNextPotencialPosition(this).getX() + getXRadius();
+	}
+
+	public int getPotentialMinorY() {
+		return direction.getNextPotencialPosition(this).getY() - getYRadius();
+	}
+
+	public int getPotentialMajorY() {
+		return direction.getNextPotencialPosition(this).getY() + getYRadius();
+	}
+
+	public void move() {
+		if (hasToMove) {
+			getDirection().apply(this);
+			updated();
+			hasToMove = false;
+		}
 	}
 }
