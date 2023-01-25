@@ -7,7 +7,6 @@ import java.util.Observable;
 public class Board extends Observable {
 
 	Square matrix[][] = new Square[Constants.SQUARE_HEIGHT][Constants.SQUARE_WIDTH];
-	Collection<Entity> entities = new HashSet<>();
 
 	public Board() {
 		for (int x = 0; x < Constants.SQUARE_HEIGHT; x++) {
@@ -69,5 +68,27 @@ public class Board extends Observable {
 			sb.append("\n");
 		}
 		return sb.toString();
+	}
+
+	public void move(Movable movable) {
+		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
+				movable.getPotentialMajorY())) {
+			Collection<Entity> collisionEntities = getCollisionEntities(movable.getPotentialMinorX(),
+					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
+			removeEntity(movable);
+			movable.doMove();
+			appendEntity(movable);
+		}
+	}
+
+	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
+			int potentialMajorY) {
+		Collection<Entity> entities = new HashSet<>();
+		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
+			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
+				entities.addAll(matrix[i][j].getEntities());
+			}
+		}
+		return entities;
 	}
 }

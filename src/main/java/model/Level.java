@@ -16,22 +16,6 @@ public class Level {
 		return map;
 	}
 
-	public void refreshMap() {
-		map.removeEntity(tank);
-		if (map.checkInBoardBounds(tank.getPotentialMinorX(), tank.getPotentialMajorX(), tank.getPotentialMinorY(),
-				tank.getPotentialMajorY())) {
-			tank.move();
-		}
-		map.appendEntity(tank);
-
-		map.removeEntity(tanktwo);
-		if (map.checkInBoardBounds(tanktwo.getPotentialMinorX(), tanktwo.getPotentialMajorX(),
-				tanktwo.getPotentialMinorY(), tanktwo.getPotentialMajorY())) {
-			tanktwo.move();
-		}
-		map.appendEntity(tanktwo);
-	}
-
 	public Movable getTank() {
 		return tank;
 	}

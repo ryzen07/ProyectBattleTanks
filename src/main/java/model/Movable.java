@@ -5,7 +5,6 @@ import model.directions.Direction;
 public class Movable extends Entity {
 	private final int speed;
 	private Direction direction;
-	protected boolean hasToMove = false;
 
 	public Movable(Position center, int majorRadius, int minorRadius, int speed, Direction direction) {
 		super(center, majorRadius, minorRadius);
@@ -15,14 +14,6 @@ public class Movable extends Entity {
 
 	public int getSpeed() {
 		return speed;
-	}
-
-	public boolean getHasToMove() {
-		return hasToMove;
-	}
-
-	public void setHasToMove(boolean hasToMove) {
-		this.hasToMove = hasToMove;
 	}
 
 	@Override
@@ -86,11 +77,14 @@ public class Movable extends Entity {
 		return direction.getNextPotencialPosition(this).getY() + getYRadius();
 	}
 
-	public void move() {
-		if (hasToMove) {
-			getDirection().apply(this);
-			updated();
-			hasToMove = false;
-		}
+	public void doMove() {
+		getDirection().apply(this);
+		updated();
 	}
+
+	public void move() {
+		Game.getInstance().getLevel().map.move(this);
+
+	}
+
 }

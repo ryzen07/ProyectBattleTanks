@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Square {
-	Collection<Entity> entities = new HashSet<>();
+	private final Collection<Entity> entities = new HashSet<>();
 
 	public void add(Entity object) {
 		entities.add(object);
@@ -20,6 +20,10 @@ public class Square {
 
 	public boolean contains(Entity entity) {
 		return entities.contains(entity);
+	}
+
+	public Collection<Entity> getEntities() {
+		return entities;
 	}
 
 	@Override
