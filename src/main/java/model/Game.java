@@ -1,7 +1,6 @@
 package model;
 
 import controller.Player;
-import controller.PlayerTwo;
 import view.Window;
 
 public class Game {
@@ -22,8 +21,8 @@ public class Game {
 		Movable tanktwo = level.getTankTwo();
 		Board board = level.getMap();
 		Window window = new Window(tank, board);
-		Player player = new Player(tank);
-		PlayerTwo playertwo = new PlayerTwo(tanktwo);
+		Player player = new Player(tank, Player.KEY_TRANSLATOR);
+		Player playertwo = new Player(tanktwo, Player.KEY_TRANSLATOR_SECONDARY);
 		tank.addObserver(window.getTankView());
 		tanktwo.addObserver(window.getTankView());
 		board.addObserver(window.getBoardView());

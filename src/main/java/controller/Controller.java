@@ -9,7 +9,7 @@ public class Controller {
 	}
 
 	public void run() throws InterruptedException {
-		// System.out.println(map);
+
 		while (true) {
 			update();
 			Thread.sleep(1000);
@@ -17,7 +17,6 @@ public class Controller {
 	}
 
 	public void update() throws InterruptedException {
-		Game.getInstance().getLevel().refreshMap();
 		System.out.println(Game.getInstance().getLevel().getMap());
 	}
 
