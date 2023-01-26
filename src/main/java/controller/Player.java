@@ -25,10 +25,10 @@ public class Player implements KeyListener {
 		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Up());
 		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Down());
 
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_1, new Left());
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_3, new Right());
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_5, new Up());
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_2, new Down());
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Left());
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD3, new Right());
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Up());
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD2, new Down());
 	} // usar singleton
 
 	public Player(Movable tank, Map<Integer, Direction> keyTranslator) {

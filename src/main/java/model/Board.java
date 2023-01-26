@@ -32,7 +32,7 @@ public class Board extends Observable {
 		return true;
 	}
 
-	public void appendEntity(Entity entity) {
+	public void appendEntity(Entity entity) throws EntityOutOfRangeException {
 		if (checkInBoardBounds(entity.getMinorX(), entity.getMajorX(), entity.getMinorY(), entity.getMajorY())) {
 			for (int x = entity.getMinorX(); x <= entity.getMajorX(); x++) {
 				for (int y = entity.getMinorY(); y <= entity.getMajorY(); y++) {
@@ -40,6 +40,7 @@ public class Board extends Observable {
 				}
 			}
 		}
+		throw new EntityOutOfRangeException();
 	}
 
 	public void removeEntity(Entity entity) {
@@ -75,6 +76,9 @@ public class Board extends Observable {
 				movable.getPotentialMajorY())) {
 			Collection<Entity> collisionEntities = getCollisionEntities(movable.getPotentialMinorX(),
 					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
+			for (Entity entity : collisionEntities) {
+				movable.interact(entity);
+			}
 			removeEntity(movable);
 			movable.doMove();
 			appendEntity(movable);

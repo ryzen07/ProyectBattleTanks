@@ -2,19 +2,16 @@ package model;
 
 import static org.junit.Assert.assertNotNull;
 
+import model.directions.Down;
 import org.junit.Test;
 
 public class TankTest {
 
 	@Test
 	public void whenTankShootThenABulletIsCreated() {
-		Tank tanks = new Tank(Direction.DOWN, 4, 3);
-		Bullet bullet = tanks.shoot();
+		Bullet bullet = new Bullet(new Position(2,2),new Down());
+		Tank tanks = new Tank(4, 3,new Down());
+		tanks.shoot(bullet);
 		assertNotNull(bullet);
 	}
 }
-
-//@Test(expected = Exception.class)
-//public void whenTankIsCreatedWithNegativeLifeThenItShoudThrowAnException() throws Exception {
-//	Tank tank = new Tank(true,-5);
-//}
