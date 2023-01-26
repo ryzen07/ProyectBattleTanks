@@ -70,7 +70,16 @@ public class Board extends Observable {
 		}
 		return sb.toString();
 	}
-
+	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
+													int potentialMajorY) {
+		Collection<Entity> entities = new HashSet<>();
+		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
+			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
+				entities.addAll(matrix[i][j].getEntities());
+			}
+		}
+		return entities;
+	}
 	public void move(Movable movable) {
 		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
 				movable.getPotentialMajorY())) {
@@ -85,14 +94,5 @@ public class Board extends Observable {
 		}
 	}
 
-	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
-			int potentialMajorY) {
-		Collection<Entity> entities = new HashSet<>();
-		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
-			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
-				entities.addAll(matrix[i][j].getEntities());
-			}
-		}
-		return entities;
-	}
+
 }

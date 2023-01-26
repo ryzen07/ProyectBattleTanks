@@ -17,6 +17,11 @@ public class Down extends Direction {
 	}
 
 	@Override
+	public void moveBack(Movable movable) {
+		movable.increaseCenterY();
+	}
+
+	@Override
 	public boolean isHorizontal() {
 		return false;
 	}
