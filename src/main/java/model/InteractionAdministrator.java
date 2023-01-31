@@ -4,10 +4,9 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class InteractionAdministrator {
-	private Collection<Entity> entities = new HashSet<>();
+	Collection<Interaction> interactionSet = new HashSet<>();
 
-	public void savedInteraction(Collection<Entity> collisionEntities, Interaction interaction) {
-		entities = collisionEntities;
+	public void add(Interaction interaction) {
+		interactionSet.add(interaction);
 	}
-
 }

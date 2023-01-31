@@ -12,4 +12,5 @@ public class Interaction {
 	public void collision(Entity entity, Movable movable) {
 		movable.moveBack();
 	}
+
 }
