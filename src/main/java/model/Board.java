@@ -39,8 +39,9 @@ public class Board extends Observable {
 					matrix[x][y].add(entity);
 				}
 			}
+		} else {
+			throw new EntityOutOfRangeException();
 		}
-		throw new EntityOutOfRangeException();
 	}
 
 	public void removeEntity(Entity entity) {
@@ -70,8 +71,9 @@ public class Board extends Observable {
 		}
 		return sb.toString();
 	}
+
 	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
-													int potentialMajorY) {
+			int potentialMajorY) {
 		Collection<Entity> entities = new HashSet<>();
 		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
 			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
@@ -80,19 +82,20 @@ public class Board extends Observable {
 		}
 		return entities;
 	}
+
 	public void move(Movable movable) {
 		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
 				movable.getPotentialMajorY())) {
 			Collection<Entity> collisionEntities = getCollisionEntities(movable.getPotentialMinorX(),
 					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
 			for (Entity entity : collisionEntities) {
-				movable.interact(entity);
+				// movable.interact(entity);
+				movable.interact(entity).collision(entity, movable);
 			}
 			removeEntity(movable);
 			movable.doMove();
 			appendEntity(movable);
 		}
 	}
-
 
 }

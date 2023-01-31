@@ -1,6 +1,6 @@
 package model;
 
-import model.directions.*;
+import model.directions.Direction;
 
 public class Movable extends Entity {
 	private final int speed;
@@ -86,13 +86,11 @@ public class Movable extends Entity {
 		Game.getInstance().getLevel().map.move(this);
 	}
 
-	public void moveBack()
-	{
-			direction.moveBack(this);
+	public void moveBack() {
+		direction.moveBack(this);
 	}
 
 	public Interaction interact(Entity entity) {
-		return new Interaction(this,entity);
+		return new Interaction(this, entity);
 	}
-
 }

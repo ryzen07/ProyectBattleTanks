@@ -13,7 +13,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionUp() {
 		Board board = new Board();
-		Tank tank = new Tank(2, 2, new Up());
+		Tank tank = new Tank(4, 4, new Up());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -21,7 +21,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionDown() {
 		Board board = new Board();
-		Tank tank = new Tank(2, 2,new Down());
+		Tank tank = new Tank(4, 4,new Down());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -29,7 +29,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionRight() {
 		Board board = new Board();
-		Tank tank = new Tank(2, 2,new Right());
+		Tank tank = new Tank(8, 8,new Right());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -37,7 +37,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionLeft() {
 		Board board = new Board();
-		Tank tank = new Tank(2, 2,new Left());
+		Tank tank = new Tank(4, 4,new Left());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
