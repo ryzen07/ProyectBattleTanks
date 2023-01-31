@@ -90,7 +90,7 @@ public class Board extends Observable {
 					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
 			InteractionAdministration interactionAdministration = new InteractionAdministration();
 			for (Entity entity : collisionEntities) {
-				interactionAdministration.savedInteraction(entity);
+				interactionAdministration.savedInteraction(entity, movable.interact(entity));
 				movable.interact(entity).collision(entity, movable);
 			}
 			removeEntity(movable);
