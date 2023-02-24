@@ -16,13 +16,17 @@ public class Tank extends Movable {
 		return center;
 	}
 
-	public Bullet shoot(Bullet bullet)
-	{
+	public Bullet shoot(Bullet bullet) {
 		return bullet;
 	}
 
 	public void setCenter(Position center) {
 		this.center = center;
+	}
+
+	@Override
+	public boolean isObstacle() {
+		return true;
 	}
 
 	@Override

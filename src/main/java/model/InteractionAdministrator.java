@@ -4,9 +4,23 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class InteractionAdministrator {
-	Collection<Interaction> interactionSet = new HashSet<>();
+	Collection<Interaction> interactions = new HashSet<>();
 
 	public void add(Interaction interaction) {
-		interactionSet.add(interaction);
+		interactions.add(interaction);
+	}
+
+	public Collection<Interaction> getInteractions() {
+		return interactions;
+	}
+
+	public boolean canMove() {
+
+		for (Interaction interaction : interactions) {
+			if (!interaction.canMove()) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

@@ -72,31 +72,34 @@ public class Board extends Observable {
 		return sb.toString();
 	}
 
-	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
-			int potentialMajorY) {
+	private Collection<Entity> getCollisionEntities(Movable movable) {
 		Collection<Entity> entities = new HashSet<>();
-		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
-			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
+		for (int i = movable.getPotentialMinorX(); i <= movable.getPotentialMajorX(); i++) {
+			for (int j = movable.getPotentialMinorY(); j <= movable.getPotentialMajorY(); j++) {
 				entities.addAll(matrix[i][j].getEntities());
 			}
 		}
+		entities.remove(movable);
 		return entities;
 	}
 
 	public void move(Movable movable) {
 		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
 				movable.getPotentialMajorY())) {
-			Collection<Entity> collisionEntities = getCollisionEntities(movable.getPotentialMinorX(),
-					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
+			Collection<Entity> collisionEntities = getCollisionEntities(movable);
+
 			InteractionAdministrator interactionAdministrator = new InteractionAdministrator();
+
 			for (Entity entity : collisionEntities) {
 				interactionAdministrator.add(movable.interact(entity));
 			}
-
-			removeEntity(movable);
-			movable.doMove();
-			appendEntity(movable);
+			if (interactionAdministrator.canMove()) {
+				removeEntity(movable);
+				movable.doMove();
+				appendEntity(movable);
+			}
+			{
+			}
 		}
 	}
-
 }

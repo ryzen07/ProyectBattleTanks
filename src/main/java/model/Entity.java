@@ -44,4 +44,20 @@ public abstract class Entity extends Observable {
 	public String toString() {
 		return "#";
 	}
+
+	public boolean isObstacle() {
+		return false;
+	}
+
+	public boolean isWall() {
+		return false;
+	}
+
+	public boolean isBullet() {
+		return false;
+	}
+
+	public boolean isBulletAndTank() {
+		return false;
+	}
 }
