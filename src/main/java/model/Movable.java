@@ -93,4 +93,5 @@ public class Movable extends Entity {
 	public Interaction interact(Entity entity) {
 		return new Interaction(this, entity);
 	}
+
 }

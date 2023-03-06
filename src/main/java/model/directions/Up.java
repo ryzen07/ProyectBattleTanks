@@ -26,4 +26,5 @@ public class Up extends Direction {
 
 		return new Position(movable.getPosition().getX(), movable.getPosition().getY() + movable.getSpeed());
 	}
+
 }

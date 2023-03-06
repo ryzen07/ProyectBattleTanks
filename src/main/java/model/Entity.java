@@ -60,4 +60,5 @@ public abstract class Entity extends Observable {
 	public boolean isBulletAndTank() {
 		return false;
 	}
+
 }

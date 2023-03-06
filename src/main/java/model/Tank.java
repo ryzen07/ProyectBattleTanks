@@ -16,8 +16,8 @@ public class Tank extends Movable {
 		return center;
 	}
 
-	public Bullet shoot(Bullet bullet) {
-		return bullet;
+	public void shoot() {
+
 	}
 
 	public void setCenter(Position center) {
