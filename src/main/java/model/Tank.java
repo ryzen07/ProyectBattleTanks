@@ -16,10 +16,6 @@ public class Tank extends Movable {
 		return center;
 	}
 
-	public void shoot() {
-
-	}
-
 	public void setCenter(Position center) {
 		this.center = center;
 	}

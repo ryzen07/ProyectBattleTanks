@@ -27,7 +27,7 @@ public class Player implements KeyListener {
 		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Movement(new Up()));
 		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Movement(new Down()));
 		KEY_TRANSLATOR.put(KeyEvent.VK_SPACE, new Shoot());
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Movement(new Left()));
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD1, new Movement(new Left()));
 		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD3, new Movement(new Right()));
 		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Movement(new Up()));
 		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD2, new Movement(new Down()));
@@ -50,8 +50,8 @@ public class Player implements KeyListener {
 		Integer key = e.getKeyCode();
 		if (keyTranslator.containsKey(key)) {
 			keyTranslator.get(key).apply(tank);
-		}
 
+		}
 	}
 
 	@Override

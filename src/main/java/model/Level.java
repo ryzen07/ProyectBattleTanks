@@ -3,7 +3,7 @@ package model;
 import model.directions.Up;
 
 public class Level {
-	Movable tank = new Tank(7, 7, new Up());
+	Tank tank = new Tank(7, 7, new Up());
 	Tank tanktwo = new Tank(14, 14, new Up());
 	Wall wall = new Wall(1, 1);
 	Water water = new Water(3, 4);
@@ -22,11 +22,11 @@ public class Level {
 		return map;
 	}
 
-	public Movable getTank() {
+	public Tank getTank() {
 		return tank;
 	}
 
-	public Movable getTankTwo() {
+	public Tank getTankTwo() {
 		return tanktwo;
 	}
 }

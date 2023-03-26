@@ -86,6 +86,10 @@ public class Movable extends Entity {
 		Game.getInstance().getLevel().map.move(this);
 	}
 
+	public boolean autoMove() {
+		return false;
+	}
+
 	public void moveBack() {
 		direction.moveBack(this);
 	}
@@ -93,5 +97,4 @@ public class Movable extends Entity {
 	public Interaction interact(Entity entity) {
 		return new Interaction(this, entity);
 	}
-
 }

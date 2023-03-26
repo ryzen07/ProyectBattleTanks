@@ -79,7 +79,7 @@ public class Board extends Observable {
 				entities.addAll(matrix[i][j].getEntities());
 			}
 		}
-		entities.remove(movable);
+		entities.remove(movable); // saco por la que pregunto
 		return entities;
 	}
 
@@ -98,8 +98,11 @@ public class Board extends Observable {
 				movable.doMove();
 				appendEntity(movable);
 			}
-			{
-			}
 		}
+	}
+
+	public void update() {
+		setChanged();
+		notifyObservers();
 	}
 }
