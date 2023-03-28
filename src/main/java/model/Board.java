@@ -88,12 +88,12 @@ public class Board extends Observable {
 				movable.getPotentialMajorY())) {
 			Collection<Entity> collisionEntities = getCollisionEntities(movable);
 
-			InteractionAdministrator interactionAdministrator = new InteractionAdministrator();
+			InteractionManager interactionManager = new InteractionManager();
 
 			for (Entity entity : collisionEntities) {
-				interactionAdministrator.add(movable.interact(entity));
+				interactionManager.add(movable.interact(entity));
 			}
-			if (interactionAdministrator.canMove()) {
+			if (interactionManager.canMove()) {
 				removeEntity(movable);
 				movable.doMove();
 				appendEntity(movable);

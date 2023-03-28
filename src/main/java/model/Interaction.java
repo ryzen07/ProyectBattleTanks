@@ -13,10 +13,6 @@ public class Interaction {
 		return otherEntity;
 	}
 
-	public void collision(Entity entity, Movable movable) {
-		movable.moveBack();
-	}
-
 	public boolean canMove() {
 		return !otherEntity.isObstacle();
 	}

@@ -3,7 +3,7 @@ package model;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class InteractionAdministrator {
+public class InteractionManager {
 	Collection<Interaction> interactions = new HashSet<>();
 
 	public void add(Interaction interaction) {
