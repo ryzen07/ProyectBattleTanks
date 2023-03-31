@@ -49,16 +49,4 @@ public abstract class Entity extends Observable {
 		return false;
 	}
 
-	public boolean isWall() {
-		return false;
-	}
-
-	public boolean isBullet() {
-		return false;
-	}
-
-	public boolean isBulletAndTank() {
-		return false;
-	}
-
 }

@@ -17,7 +17,7 @@ public class Controller {
 	}
 
 	public void update() throws InterruptedException {
-		Game.getInstance().getLevel().getMap().update();
+		// Game.getInstance().getLevel().getMap().update();
 		System.out.println(Game.getInstance().getLevel().getMap());
 	}
 

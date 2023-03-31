@@ -11,11 +11,6 @@ public class Right extends Direction {
 	}
 
 	@Override
-	public void moveBack(Movable movable) {
-		movable.decreaseCenterX();
-	}
-
-	@Override
 	public boolean isHorizontal() {
 		return true;
 	}

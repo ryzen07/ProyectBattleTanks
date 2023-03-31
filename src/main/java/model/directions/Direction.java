@@ -14,8 +14,6 @@ public abstract class Direction {
 
 	protected abstract void move(Movable movable);
 
-	public abstract void moveBack(Movable movable);
-
 	public abstract Position getNextPotencialPosition(Movable movable);
 
 }

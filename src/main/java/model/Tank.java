@@ -29,4 +29,8 @@ public class Tank extends Movable {
 	public String toString() {
 		return "x";
 	}
+
+	public Bullet shoot() {
+		return new Bullet(getPosition(), getDirection());
+	}
 }

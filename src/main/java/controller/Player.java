@@ -50,7 +50,6 @@ public class Player implements KeyListener {
 		Integer key = e.getKeyCode();
 		if (keyTranslator.containsKey(key)) {
 			keyTranslator.get(key).apply(tank);
-
 		}
 	}
 

@@ -12,11 +12,6 @@ public class Up extends Direction {
 	}
 
 	@Override
-	public void moveBack(Movable movable) {
-		movable.decreaseCenterY();
-	}
-
-	@Override
 	public boolean isHorizontal() {
 		return false;
 	}

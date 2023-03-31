@@ -11,11 +11,6 @@ public class Left extends Direction {
 	}
 
 	@Override
-	public void moveBack(Movable movable) {
-		movable.increaseCenterX();
-	}
-
-	@Override
 	public boolean isHorizontal() {
 		return true;
 	}

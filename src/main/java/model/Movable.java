@@ -90,10 +90,6 @@ public class Movable extends Entity {
 		return false;
 	}
 
-	public void moveBack() {
-		direction.moveBack(this);
-	}
-
 	public Interaction interact(Entity entity) {
 		return new Interaction(this, entity);
 	}
