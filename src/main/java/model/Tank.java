@@ -21,7 +21,16 @@ public class Tank extends Movable {
 	}
 
 	@Override
+	public boolean isObstacle() {
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "x";
+	}
+
+	public Bullet shoot() {
+		return new Bullet(getPosition(), getDirection());
 	}
 }

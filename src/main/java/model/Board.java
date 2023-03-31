@@ -32,13 +32,15 @@ public class Board extends Observable {
 		return true;
 	}
 
-	public void appendEntity(Entity entity) {
+	public void appendEntity(Entity entity) throws EntityOutOfRangeException {
 		if (checkInBoardBounds(entity.getMinorX(), entity.getMajorX(), entity.getMinorY(), entity.getMajorY())) {
 			for (int x = entity.getMinorX(); x <= entity.getMajorX(); x++) {
 				for (int y = entity.getMinorY(); y <= entity.getMajorY(); y++) {
 					matrix[x][y].add(entity);
 				}
 			}
+		} else {
+			throw new EntityOutOfRangeException();
 		}
 	}
 
@@ -70,25 +72,37 @@ public class Board extends Observable {
 		return sb.toString();
 	}
 
-	public void move(Movable movable) {
-		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
-				movable.getPotentialMajorY())) {
-			Collection<Entity> collisionEntities = getCollisionEntities(movable.getPotentialMinorX(),
-					movable.getPotentialMajorX(), movable.getPotentialMinorY(), movable.getPotentialMajorY());
-			removeEntity(movable);
-			movable.doMove();
-			appendEntity(movable);
-		}
-	}
-
-	private Collection<Entity> getCollisionEntities(int potentialMinorX, int potentialMajorX, int potentialMinorY,
-			int potentialMajorY) {
+	private Collection<Entity> getCollisionEntities(Movable movable) {
 		Collection<Entity> entities = new HashSet<>();
-		for (int i = potentialMinorX; i <= potentialMajorX; i++) {
-			for (int j = potentialMinorY; j <= potentialMajorY; j++) {
+		for (int i = movable.getPotentialMinorX(); i <= movable.getPotentialMajorX(); i++) {
+			for (int j = movable.getPotentialMinorY(); j <= movable.getPotentialMajorY(); j++) {
 				entities.addAll(matrix[i][j].getEntities());
 			}
 		}
+		entities.remove(movable);
 		return entities;
+	}
+
+	public void move(Movable movable) {
+		if (checkInBoardBounds(movable.getPotentialMinorX(), movable.getPotentialMajorX(), movable.getPotentialMinorY(),
+				movable.getPotentialMajorY())) {
+			Collection<Entity> collisionEntities = getCollisionEntities(movable);
+
+			InteractionManager interactionManager = new InteractionManager();
+
+			for (Entity entity : collisionEntities) {
+				interactionManager.add(movable.interact(entity));
+			}
+			if (interactionManager.canMove()) {
+				removeEntity(movable);
+				movable.doMove();
+				appendEntity(movable);
+			}
+		}
+	}
+
+	public void update() {
+		setChanged();
+		notifyObservers();
 	}
 }

@@ -84,7 +84,13 @@ public class Movable extends Entity {
 
 	public void move() {
 		Game.getInstance().getLevel().map.move(this);
-
 	}
 
+	public boolean autoMove() {
+		return false;
+	}
+
+	public Interaction interact(Entity entity) {
+		return new Interaction(this, entity);
+	}
 }

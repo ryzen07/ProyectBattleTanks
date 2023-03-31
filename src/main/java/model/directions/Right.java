@@ -20,4 +20,5 @@ public class Right extends Direction {
 
 		return new Position(movable.getPosition().getX() + movable.getSpeed(), movable.getPosition().getY());
 	}
+
 }

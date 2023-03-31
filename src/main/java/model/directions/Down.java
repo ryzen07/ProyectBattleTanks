@@ -26,4 +26,5 @@ public class Down extends Direction {
 
 		return new Position(movable.getPosition().getX(), movable.getPosition().getY() - movable.getSpeed());
 	}
+
 }

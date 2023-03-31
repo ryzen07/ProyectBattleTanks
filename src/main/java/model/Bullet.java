@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import model.directions.Direction;
 
-public class Bullet extends Movable {
+public class Bullet extends Movable implements Observer {
 
 	public static final int RADIUS = 0;
 	private static final int SPEED = 1;
@@ -14,5 +17,10 @@ public class Bullet extends Movable {
 	@Override
 	public String toString() {
 		return "b";
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		move();
 	}
 }

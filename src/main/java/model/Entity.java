@@ -44,4 +44,9 @@ public abstract class Entity extends Observable {
 	public String toString() {
 		return "#";
 	}
+
+	public boolean isObstacle() {
+		return false;
+	}
+
 }
