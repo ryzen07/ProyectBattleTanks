@@ -1,13 +1,9 @@
 package controller.strategy;
 
+import model.directions.Direction;
+
 public abstract class MovementStrategy {
 
-	private MovementStrategy strategy;
-
-	public void setMovementStrategy(MovementStrategy strategy) {
-		this.strategy = strategy;
-	}
-
-	public abstract void moveMovable();
+	public abstract Direction getNextDirection();
 
 }

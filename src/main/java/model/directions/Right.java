@@ -5,6 +5,15 @@ import model.Position;
 
 public class Right extends Direction {
 
+	private static final Right INSTANCE = new Right();
+
+	private Right() {
+	}
+
+	public static Right getInstance() {
+		return INSTANCE;
+	}
+
 	@Override
 	protected void move(Movable movable) {
 		movable.increaseCenterX();

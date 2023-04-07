@@ -1,7 +1,10 @@
 package controller;
 
+import controller.strategy.RandomStrategy;
+
 public class PlayerBot {
 	MovementStrategy strategy;
+	RandomStrategy randomMovement;
 
 	public void Player(MovementStrategy strategy) {
 		this.strategy = strategy;
@@ -12,6 +15,6 @@ public class PlayerBot {
 	}
 
 	public void move() {
-		strategy.move1();
+		randomMovement.moveMovable();
 	}
 }

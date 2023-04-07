@@ -5,6 +5,15 @@ import model.Position;
 
 public class Down extends Direction {
 
+	private static final Down INSTANCE = new Down();
+
+	private Down() {
+	}
+
+	public static Down getInstance() {
+		return INSTANCE;
+	}
+
 	@Override
 	protected void move(Movable movable) {
 		movable.decreaseCenterY();

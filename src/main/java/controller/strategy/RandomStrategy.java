@@ -1,40 +1,29 @@
 package controller.strategy;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 import model.directions.Direction;
 
 public class RandomStrategy extends MovementStrategy {
 
-	private final Collection<Direction> directions = new HashSet<>();
+	private final Random randomGenerator;
 
-	public Collection<Direction> getdirections() {
-		return directions;
+	public RandomStrategy(long seed) {
+		randomGenerator = new Random(seed);
 	}
 
-	private <Direction> model.directions.Direction getRandomDirection(
-			Collection<model.directions.Direction> collection) {
-		int randomValue = new Random().nextInt(collection.size());
+	public RandomStrategy() {
+		randomGenerator = new Random();
+	}
 
-		int index = 0;
-		model.directions.Direction randomElement = null;
-
-		for (model.directions.Direction element : collection) {
-			randomElement = element;
-
-			if (index == randomValue) {
-				return randomElement;
-			}
-
-			index++;
-		}
-		return randomElement;
+	private Direction getRandomDirection(List<Direction> directions) {
+		int randomValue = randomGenerator.nextInt(directions.size());
+		return directions.get(randomValue);
 	}
 
 	@Override
-	public void moveMovable() {
-		getRandomDirection(getdirections());
+	public Direction getNextDirection() {
+		return getRandomDirection(Direction.getDirections());
 	}
 }

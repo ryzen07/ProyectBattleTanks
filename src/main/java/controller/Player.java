@@ -22,15 +22,15 @@ public class Player implements KeyListener {
 	private final Map<Integer, Action> keyTranslator;
 
 	static {
-		KEY_TRANSLATOR.put(KeyEvent.VK_LEFT, new Movement(new Left()));
-		KEY_TRANSLATOR.put(KeyEvent.VK_RIGHT, new Movement(new Right()));
-		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Movement(new Up()));
-		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Movement(new Down()));
+		KEY_TRANSLATOR.put(KeyEvent.VK_LEFT, new Movement(Left.getInstance()));
+		KEY_TRANSLATOR.put(KeyEvent.VK_RIGHT, new Movement(Right.getInstance()));
+		KEY_TRANSLATOR.put(KeyEvent.VK_UP, new Movement(Up.getInstance()));
+		KEY_TRANSLATOR.put(KeyEvent.VK_DOWN, new Movement(Down.getInstance()));
 		KEY_TRANSLATOR.put(KeyEvent.VK_SPACE, new Shoot());
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD1, new Movement(new Left()));
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD3, new Movement(new Right()));
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Movement(new Up()));
-		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD2, new Movement(new Down()));
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD1, new Movement(Left.getInstance()));
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD3, new Movement(Right.getInstance()));
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Movement(Up.getInstance()));
+		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD2, new Movement(Down.getInstance()));
 		KEY_TRANSLATOR.put(KeyEvent.VK_BACK_SPACE, new Shoot());
 	} // usar singleton
 
