@@ -57,9 +57,4 @@ public class PlayerHuman extends Player implements KeyListener {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void Applymovement() {
-		// TODO Auto-generated method stub
-
-	}
 }

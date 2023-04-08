@@ -12,10 +12,6 @@ public abstract class Direction {
 
 	private static final ArrayList<Direction> DIRECTIONS = Lists.newArrayList(Up.getInstance(), Down.getInstance(),
 			Left.getInstance(), Right.getInstance());
-	private static Direction directionUp = Up.getInstance();
-	private static Direction directionDown = Down.getInstance();
-	private static Direction directionLeft = Left.getInstance();
-	private static Direction directionRight = Right.getInstance();
 
 	public void apply(Movable movable) {
 		movable.setDirection(this);
@@ -24,22 +20,6 @@ public abstract class Direction {
 
 	public static List<Direction> getDirections() {
 		return DIRECTIONS;
-	}
-
-	public static Direction getUpDirection() {
-		return directionUp;
-	}
-
-	public static Direction getDownDirection() {
-		return directionDown;
-	}
-
-	public static Direction getLeftDirection() {
-		return directionLeft;
-	}
-
-	public static Direction getRightDirection() {
-		return directionRight;
 	}
 
 	public abstract boolean isHorizontal();

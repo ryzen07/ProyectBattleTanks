@@ -1,14 +1,16 @@
 package model;
 
-import model.directions.Direction;
+import model.directions.Up;
 
 public class Level {
-	Tank tank = new Tank(7, 7, Direction.getUpDirection());
-	Tank tanktwo = new Tank(14, 14, Direction.getUpDirection());
-	Wall wall = new Wall(1, 1);
-	Water water = new Water(3, 4);
-	Eagle eagle = new Eagle(8, 1);
-	Board map = new Board();
+	private final Tank tank = new Tank(7, 7, Up.getInstance());
+	private final Tank tanktwo = new Tank(14, 14, Up.getInstance());
+
+	private final Wall wall = new Wall(1, 1);
+	private final Water water = new Water(3, 4);
+	private final Eagle eagle = new Eagle(8, 1);
+	private final Board map = new Board();
+	private final Tank tankBot = new Tank(20, 20, Up.getInstance());
 
 	public Level() {
 		map.appendEntity(tank);
@@ -16,6 +18,7 @@ public class Level {
 		map.appendEntity(wall);
 		map.appendEntity(water);
 		map.appendEntity(eagle);
+		map.appendEntity(tankBot);
 	}
 
 	public Board getMap() {
@@ -29,4 +32,9 @@ public class Level {
 	public Tank getTankTwo() {
 		return tanktwo;
 	}
+
+	public Tank getTankBot() {
+		return tankBot;
+	}
+
 }

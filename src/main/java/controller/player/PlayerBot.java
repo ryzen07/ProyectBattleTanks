@@ -1,26 +1,37 @@
 package controller.player;
 
-import controller.MovementStrategy;
-import controller.strategy.RandomStrategy;
+import controller.strategy.MovementStrategy;
+import model.Tank;
 
 public class PlayerBot extends Player {
 	MovementStrategy strategy;
-	RandomStrategy randomMovement;
+	private final Tank tank;
 
-	public void Player(MovementStrategy strategy) {
+	public PlayerBot(MovementStrategy strategy, Tank tank) {
 		this.strategy = strategy;
+		this.tank = tank;
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					doAction();
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						throw new RuntimeException(e);
+					}
+				}
+			}
+		};
+		thread.start();
 	}
 
 	public void setMovementStrategy(MovementStrategy strategy) {
 		this.strategy = strategy;
 	}
 
-	public void move() {
-
+	public void doAction() {
+		strategy.getNextAction().apply(tank);
 	}
 
-	@Override
-	public void Applymovement() {
-		randomMovement.getNextDirection();
-	}
 }

@@ -20,13 +20,13 @@ public class Board extends Observable {
 		if (minorX < 0) {
 			return false;
 		}
-		if (mayorX > Constants.LIMIT_MAJOR_X - 1) {
+		if (mayorX > Constants.SQUARE_WIDTH - 1) {
 			return false;
 		}
 		if (minorY < 0) {
 			return false;
 		}
-		if (mayorY > Constants.LIMIT_MAJOR_Y - 1) {
+		if (mayorY > Constants.SQUARE_HEIGHT - 1) {
 			return false;
 		}
 		return true;
