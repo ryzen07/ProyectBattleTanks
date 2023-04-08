@@ -8,18 +8,14 @@ import javax.swing.JPanel;
 
 import model.Movable;
 import model.directions.Direction;
-import model.directions.Down;
-import model.directions.Left;
-import model.directions.Right;
-import model.directions.Up;
 
 public class TankView extends JPanel implements Observer {
 
 	private final Movable tank;
-	Direction left = new Left();
-	Direction right = new Right();
-	Direction up = new Up();
-	Direction down = new Down();
+	Direction left = Direction.getLeftDirection();
+	Direction right = Direction.getRightDirection();
+	Direction up = Direction.getUpDirection();
+	Direction down = Direction.getDownDirection();
 
 	public TankView(Movable tank) {
 		this.tank = tank;

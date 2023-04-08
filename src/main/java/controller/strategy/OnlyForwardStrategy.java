@@ -1,9 +1,12 @@
 package controller.strategy;
 
+import model.directions.Direction;
+
 public class OnlyForwardStrategy extends MovementStrategy {
 
 	@Override
-	public void moveMovable() {
+	public Direction getNextDirection() {
+		return null;
 		// TODO Auto-generated method stub
 
 	}

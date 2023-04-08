@@ -1,10 +1,10 @@
 package model;
 
-import model.directions.Up;
+import model.directions.Direction;
 
 public class Level {
-	Tank tank = new Tank(7, 7, new Up());
-	Tank tanktwo = new Tank(14, 14, new Up());
+	Tank tank = new Tank(7, 7, Direction.getUpDirection());
+	Tank tanktwo = new Tank(14, 14, Direction.getUpDirection());
 	Wall wall = new Wall(1, 1);
 	Water water = new Water(3, 4);
 	Eagle eagle = new Eagle(8, 1);

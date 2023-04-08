@@ -1,8 +1,9 @@
-package controller;
+package controller.player;
 
+import controller.MovementStrategy;
 import controller.strategy.RandomStrategy;
 
-public class PlayerBot {
+public class PlayerBot extends Player {
 	MovementStrategy strategy;
 	RandomStrategy randomMovement;
 
@@ -15,6 +16,11 @@ public class PlayerBot {
 	}
 
 	public void move() {
-		randomMovement.moveMovable();
+
+	}
+
+	@Override
+	public void Applymovement() {
+		randomMovement.getNextDirection();
 	}
 }

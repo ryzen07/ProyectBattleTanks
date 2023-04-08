@@ -1,4 +1,4 @@
-package controller;
+package controller.player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -14,7 +14,7 @@ import model.directions.Left;
 import model.directions.Right;
 import model.directions.Up;
 
-public class Player implements KeyListener {
+public class PlayerHuman extends Player implements KeyListener {
 
 	private final Tank tank;
 	public static final Map<Integer, Action> KEY_TRANSLATOR = new HashMap<>();
@@ -32,12 +32,11 @@ public class Player implements KeyListener {
 		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD5, new Movement(Up.getInstance()));
 		KEY_TRANSLATOR_SECONDARY.put(KeyEvent.VK_NUMPAD2, new Movement(Down.getInstance()));
 		KEY_TRANSLATOR.put(KeyEvent.VK_BACK_SPACE, new Shoot());
-	} // usar singleton
+	}
 
-	public Player(Tank tank, Map<Integer, Action> keyTranslator2) {
+	public PlayerHuman(Tank tank, Map<Integer, Action> keyTranslator2) {
 		this.tank = tank;
 		keyTranslator = keyTranslator2;
-		// chronometer.addObserver(chronometerView);
 	}
 
 	@Override
@@ -56,5 +55,11 @@ public class Player implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void Applymovement() {
+		// TODO Auto-generated method stub
+
 	}
 }
