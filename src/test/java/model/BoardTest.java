@@ -5,13 +5,16 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import model.directions.Direction;
+import model.directions.Down;
+import model.directions.Left;
+import model.directions.Right;
+import model.directions.Up;
 
 public class BoardTest {
 	@Test
 	public void addedTankDirectionUp() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4, Direction.getUpDirection());
+		Tank tank = new Tank(4, 4, Up.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -19,7 +22,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionDown() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4, Direction.getDownDirection());
+		Tank tank = new Tank(4, 4, Down.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -27,7 +30,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionRight() {
 		Board board = new Board();
-		Tank tank = new Tank(8, 8, Direction.getRightDirection());
+		Tank tank = new Tank(8, 8, Right.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -35,7 +38,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionLeft() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4, Direction.getLeftDirection());
+		Tank tank = new Tank(4, 4, Left.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -44,7 +47,7 @@ public class BoardTest {
 	public void whenTankIsAddedOutOfRangeThenThrowException() {
 		Board board = new Board();
 		Tank tank = new Tank(Constants.SQUARE_WIDTH - Tank.MAJOR_RADIUS, Constants.SQUARE_HEIGHT - Tank.MINOR_RADIUS,
-				Direction.getUpDirection());
+				Up.getInstance());
 		board.appendEntity(tank);
 	}
 
