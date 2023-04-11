@@ -5,12 +5,15 @@ import model.Position;
 
 public class Down extends Direction {
 
-	private static final Down INSTANCE = new Down();
+	private static Down INSTANCE = new Down();
 
 	private Down() {
 	}
 
 	public static Down getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new Down();
+		}
 		return INSTANCE;
 	}
 

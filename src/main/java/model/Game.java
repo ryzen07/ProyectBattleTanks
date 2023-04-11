@@ -26,7 +26,7 @@ public class Game {
 		Window window = new Window(tank, board);
 		PlayerHuman player = new PlayerHuman(tank, PlayerHuman.KEY_TRANSLATOR);
 		PlayerHuman playertwo = new PlayerHuman(tanktwo, PlayerHuman.KEY_TRANSLATOR_SECONDARY);
-		PlayerBot playerBot = new PlayerBot(new RandomStrategy(), tankBot);
+		PlayerBot playerbot = new PlayerBot(tankBot, new RandomStrategy());
 		tank.addObserver(window.getTankView());
 		tanktwo.addObserver(window.getTankView());
 		board.addObserver(window.getBoardView());

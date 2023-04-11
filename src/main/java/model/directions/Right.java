@@ -5,12 +5,15 @@ import model.Position;
 
 public class Right extends Direction {
 
-	private static final Right INSTANCE = new Right();
+	private static Right INSTANCE = new Right();
 
 	private Right() {
 	}
 
 	public static Right getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new Right();
+		}
 		return INSTANCE;
 	}
 

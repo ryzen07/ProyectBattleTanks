@@ -32,7 +32,7 @@ public class RandomStrategy extends MovementStrategy {
 	}
 }
 
-//pido las direcciones, recorro cada una y para cada direccion hago new
+// pido las direcciones, recorro cada una y para cada direccion hago new
 // movement
 // con la direccion como parametro y eso lo mando a una lista
 // stream tiene la funcion map y el map para cada uno de los elemntos que itera

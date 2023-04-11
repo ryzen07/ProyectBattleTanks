@@ -1,15 +1,19 @@
 package controller.player;
 
 import controller.strategy.MovementStrategy;
-import model.Tank;
+import model.Movable;
 
 public class PlayerBot extends Player {
 	MovementStrategy strategy;
-	private final Tank tank;
+	private final Movable movable;
 
-	public PlayerBot(MovementStrategy strategy, Tank tank) {
+	public void doAction() {
+		strategy.getNextAction().apply(movable);
+	}
+
+	public PlayerBot(Movable movable, MovementStrategy strategy) {
 		this.strategy = strategy;
-		this.tank = tank;
+		this.movable = movable;
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
@@ -28,10 +32,6 @@ public class PlayerBot extends Player {
 
 	public void setMovementStrategy(MovementStrategy strategy) {
 		this.strategy = strategy;
-	}
-
-	public void doAction() {
-		strategy.getNextAction().apply(tank);
 	}
 
 }

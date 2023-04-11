@@ -10,6 +10,14 @@ import model.Position;
 
 public abstract class Direction {
 
+	private static final ArrayList<Direction> DIRECTIONSNEW = new ArrayList<>();
+	static {
+		DIRECTIONSNEW.add(Down.getInstance());
+		DIRECTIONSNEW.add(Up.getInstance());
+		DIRECTIONSNEW.add(Left.getInstance());
+		DIRECTIONSNEW.add(Right.getInstance());
+
+	}
 	private static final ArrayList<Direction> DIRECTIONS = Lists.newArrayList(Up.getInstance(), Down.getInstance(),
 			Left.getInstance(), Right.getInstance());
 
@@ -19,7 +27,7 @@ public abstract class Direction {
 	}
 
 	public static List<Direction> getDirections() {
-		return DIRECTIONS;
+		return DIRECTIONSNEW;
 	}
 
 	public abstract boolean isHorizontal();

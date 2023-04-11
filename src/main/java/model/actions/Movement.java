@@ -1,6 +1,6 @@
 package model.actions;
 
-import model.Tank;
+import model.Movable;
 import model.directions.Direction;
 
 public class Movement implements Action {
@@ -12,8 +12,8 @@ public class Movement implements Action {
 	}
 
 	@Override
-	public void apply(Tank tank) {
-		tank.setDirection(direction);
-		tank.move();
+	public void apply(Movable movable) {
+		movable.setDirection(direction);
+		movable.move();
 	}
 }

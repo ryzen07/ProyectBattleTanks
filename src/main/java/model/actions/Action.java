@@ -1,9 +1,8 @@
 package model.actions;
 
-import model.Tank;
+import model.Movable;
 
 public interface Action {
 
-	void apply(Tank tank);
-
+	void apply(Movable movable);
 }

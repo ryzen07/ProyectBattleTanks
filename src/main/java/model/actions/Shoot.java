@@ -2,13 +2,14 @@ package model.actions;
 
 import model.Bullet;
 import model.Game;
+import model.Movable;
 import model.Tank;
 
 public class Shoot implements Action {
 
 	@Override
-	public void apply(Tank tank) {
-		Bullet bullet = tank.shoot();
+	public void apply(Movable movable) {
+		Bullet bullet = ((Tank) movable).shoot();
 		// Bullet bullet = new
 		// Bullet(tank.getDirection().getNextPotencialPosition(tank),
 		// tank.getDirection());
