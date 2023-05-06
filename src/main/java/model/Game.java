@@ -1,6 +1,6 @@
 package model;
 
-import controller.Player;
+import controller.player.PlayerHuman;
 import view.Window;
 
 public class Game {
@@ -19,10 +19,13 @@ public class Game {
 		level = new Level();
 		Tank tank = level.getTank();
 		Tank tanktwo = level.getTankTwo();
+		// Tank tankBot = level.getTankBot();
 		Board board = level.getMap();
 		Window window = new Window(tank, board);
-		Player player = new Player(tank, Player.KEY_TRANSLATOR);
-		Player playertwo = new Player(tanktwo, Player.KEY_TRANSLATOR_SECONDARY);
+		PlayerHuman player = new PlayerHuman(tank, PlayerHuman.KEY_TRANSLATOR);
+		PlayerHuman playertwo = new PlayerHuman(tanktwo, PlayerHuman.KEY_TRANSLATOR_SECONDARY);
+		// PlayerBot playerbot = new PlayerBot(tankBot, new RandomStrategy());
+		// PlayerBot playerbot2 = new PlayerBot(bullet, new RandomStrategy());
 		tank.addObserver(window.getTankView());
 		tanktwo.addObserver(window.getTankView());
 		board.addObserver(window.getBoardView());

@@ -5,10 +5,18 @@ import model.Position;
 
 public class Up extends Direction {
 
+	private static final Up INSTANCE = new Up();
+
+	private Up() {
+	}
+
+	public static Up getInstance() {
+		return INSTANCE;
+	}
+
 	@Override
 	protected void move(Movable movable) {
 		movable.increaseCenterY();
-
 	}
 
 	@Override

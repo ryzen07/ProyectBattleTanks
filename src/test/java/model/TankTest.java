@@ -10,7 +10,7 @@ public class TankTest {
 
 	@Test
 	public void whenTankShootThenABulletIsCreated() {
-		Tank tank = new Tank(4, 3, new Down());
+		Tank tank = new Tank(4, 3, Down.getInstance());
 		Bullet bullet = tank.shoot();
 		assertNotNull(bullet);
 	}

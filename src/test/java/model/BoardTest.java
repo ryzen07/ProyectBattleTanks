@@ -3,17 +3,18 @@ package model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Test;
+
 import model.directions.Down;
 import model.directions.Left;
 import model.directions.Right;
 import model.directions.Up;
-import org.junit.Test;
 
 public class BoardTest {
 	@Test
 	public void addedTankDirectionUp() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4, new Up());
+		Tank tank = new Tank(4, 4, Up.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -21,7 +22,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionDown() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4,new Down());
+		Tank tank = new Tank(4, 4, Down.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -29,7 +30,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionRight() {
 		Board board = new Board();
-		Tank tank = new Tank(8, 8,new Right());
+		Tank tank = new Tank(8, 8, Right.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -37,7 +38,7 @@ public class BoardTest {
 	@Test
 	public void addedTankDirectionLeft() {
 		Board board = new Board();
-		Tank tank = new Tank(4, 4,new Left());
+		Tank tank = new Tank(4, 4, Left.getInstance());
 		board.appendEntity(tank);
 		checkTankPosition(tank, board);
 	}
@@ -45,8 +46,8 @@ public class BoardTest {
 	@Test(expected = EntityOutOfRangeException.class)
 	public void whenTankIsAddedOutOfRangeThenThrowException() {
 		Board board = new Board();
-		Tank tank = new Tank(Constants.SQUARE_WIDTH - Tank.MAJOR_RADIUS,
-				Constants.SQUARE_HEIGHT - Tank.MINOR_RADIUS,new Up());
+		Tank tank = new Tank(Constants.SQUARE_WIDTH - Tank.MAJOR_RADIUS, Constants.SQUARE_HEIGHT - Tank.MINOR_RADIUS,
+				Up.getInstance());
 		board.appendEntity(tank);
 	}
 

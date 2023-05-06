@@ -16,10 +16,11 @@ import model.directions.Up;
 public class TankView extends JPanel implements Observer {
 
 	private final Movable tank;
-	Direction left = new Left();
-	Direction right = new Right();
-	Direction up = new Up();
-	Direction down = new Down();
+
+	Direction left = Left.getInstance();
+	Direction right = Right.getInstance();
+	Direction up = Up.getInstance();
+	Direction down = Down.getInstance();
 
 	public TankView(Movable tank) {
 		this.tank = tank;
