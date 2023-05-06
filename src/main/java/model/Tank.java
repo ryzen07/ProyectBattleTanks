@@ -30,7 +30,9 @@ public class Tank extends Movable {
 		return "x";
 	}
 
-	public Bullet shoot() {
-		return new Bullet(getPosition(), getDirection());
-	}
+	/*
+	 * public Bullet shoot() { // return new Bullet(getPosition(), getDirection());
+	 * Bullet bullet = new Bullet(getPosition(), getDirection()); new
+	 * PlayerBot(bullet, new OnlyForwardStrategy()); return bullet; }
+	 */
 }

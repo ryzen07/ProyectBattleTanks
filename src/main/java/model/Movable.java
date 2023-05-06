@@ -1,10 +1,12 @@
 package model;
 
+import controller.player.PlayerBot;
+import controller.strategy.OnlyForwardStrategy;
 import model.directions.Direction;
 
 public class Movable extends Entity {
 	private final int speed;
-	private Direction direction;
+	public Direction direction;
 
 	public Movable(Position center, int majorRadius, int minorRadius, int speed, Direction direction) {
 		super(center, majorRadius, minorRadius);
@@ -30,11 +32,6 @@ public class Movable extends Entity {
 			return super.getXRadius();
 		}
 		return super.getYRadius();
-	}
-
-	protected void updated() {
-		setChanged();
-		notifyObservers();
 	}
 
 	public Direction getDirection() {
@@ -77,9 +74,13 @@ public class Movable extends Entity {
 		return direction.getNextPotencialPosition(this).getY() + getYRadius();
 	}
 
+	/*
+	 * protected void updated() { setChanged(); notifyObservers(); }
+	 */
+
 	public void doMove() {
 		getDirection().apply(this);
-		updated();
+		// updated();
 	}
 
 	public void move() {
@@ -92,5 +93,11 @@ public class Movable extends Entity {
 
 	public Interaction interact(Entity entity) {
 		return new Interaction(this, entity);
+	}
+
+	public Bullet shoot() {
+		Bullet bullet = new Bullet(getPosition(), getDirection());
+		new PlayerBot(bullet, new OnlyForwardStrategy());
+		return bullet;
 	}
 }

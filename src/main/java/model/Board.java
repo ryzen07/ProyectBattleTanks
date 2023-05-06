@@ -101,8 +101,7 @@ public class Board extends Observable {
 		}
 	}
 
-	public void update() {
-		setChanged();
-		notifyObservers();
-	}
+	/*
+	 * public void update() { setChanged(); notifyObservers(); }
+	 */
 }

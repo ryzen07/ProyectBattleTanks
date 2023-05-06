@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 public class Square {
+
 	private final Collection<Entity> entities = new HashSet<>();
 
 	public void add(Entity object) {

@@ -8,7 +8,7 @@ public class PlayerBot extends Player {
 	private final Movable movable;
 
 	public void doAction() {
-		strategy.getNextAction().apply(movable);
+		strategy.getNextAction(movable.getDirection()).apply(movable);
 	}
 
 	public PlayerBot(Movable movable, MovementStrategy strategy) {

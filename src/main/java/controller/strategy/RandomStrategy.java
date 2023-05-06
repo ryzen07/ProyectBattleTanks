@@ -14,7 +14,7 @@ public class RandomStrategy extends MovementStrategy {
 	private static final List<Action> ACTIONS;
 	static {
 		ACTIONS = Direction.getDirections().stream().map(Movement::new).collect(Collectors.toList());
-		// ACTIONS.add(new Shoot());
+		// ACTIONS.add(new Shoot(null));
 	}
 
 	public RandomStrategy(long seed) {
@@ -26,7 +26,7 @@ public class RandomStrategy extends MovementStrategy {
 	}
 
 	@Override
-	public Action getNextAction() {
+	public Action getNextAction(Direction direction) {
 		int randomValue = randomGenerator.nextInt(ACTIONS.size());
 		return ACTIONS.get(randomValue);
 	}
